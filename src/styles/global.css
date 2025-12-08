@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-text-primary: 15, 23, 42;
+    --color-text-secondary: 71, 85, 105;
+    --color-bg-primary: 255, 255, 255;
+    --color-bg-secondary: 248, 250, 252;
+    --color-border: 226, 232, 240;
+  }
+
+  .dark {
+    --color-text-primary: 248, 250, 252;
+    --color-text-secondary: 203, 213, 225;
+    --color-bg-primary: 15, 23, 42;
+    --color-bg-secondary: 30, 41, 59;
+    --color-border: 51, 65, 85;
+  }
+
+  * {
+    @apply border-[rgb(var(--color-border))];
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-[rgb(var(--color-bg-primary))] text-[rgb(var(--color-text-primary))] transition-colors duration-300;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold text-[rgb(var(--color-text-primary))];
+  }
+
+  code {
+    @apply font-mono text-sm;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-all duration-200 hover:scale-105 active:scale-95;
+  }
+
+  .btn-primary {
+    @apply bg-primary-500 text-white hover:bg-primary-600 dark:bg-primary-400 dark:hover:bg-primary-500;
+  }
+
+  .btn-secondary {
+    @apply bg-[rgb(var(--color-bg-secondary))] text-[rgb(var(--color-text-primary))] hover:bg-[rgb(var(--color-border))];
+  }
+
+  .card {
+    @apply bg-[rgb(var(--color-bg-secondary))] border border-[rgb(var(--color-border))] rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .prose-custom {
+    @apply text-[rgb(var(--color-text-secondary))] leading-relaxed;
+  }
+
+  .prose-custom h1 {
+    @apply text-4xl font-bold mb-4 text-[rgb(var(--color-text-primary))];
+  }
+
+  .prose-custom h2 {
+    @apply text-3xl font-bold mt-8 mb-4 text-[rgb(var(--color-text-primary))];
+  }
+
+  .prose-custom h3 {
+    @apply text-2xl font-semibold mt-6 mb-3 text-[rgb(var(--color-text-primary))];
+  }
+
+  .prose-custom p {
+    @apply mb-4;
+  }
+
+  .prose-custom ul, .prose-custom ol {
+    @apply ml-6 mb-4 space-y-2;
+  }
+
+  .prose-custom li {
+    @apply list-disc;
+  }
+
+  .prose-custom code {
+    @apply bg-[rgb(var(--color-bg-secondary))] px-1.5 py-0.5 rounded text-sm;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-400 to-primary-500 bg-clip-text text-transparent;
+  }
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+}

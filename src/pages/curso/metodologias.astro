@@ -1,0 +1,635 @@
+---
+import CourseLayout from '../../layouts/CourseLayout.astro';
+import { Lightbulb } from 'lucide-react';
+---
+
+<CourseLayout title="Metodologías Profesionales | UXnicorp Academy">
+  <div class="prose-custom max-w-4xl">
+    <div class="mb-12">
+      <div class="flex items-center space-x-3 mb-4">
+        <div class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center">
+          <Lightbulb className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+        </div>
+        <div>
+          <p class="text-sm text-purple-600 dark:text-purple-400 font-medium">Módulo 10</p>
+          <h1 class="text-4xl font-bold m-0">Metodologías Profesionales</h1>
+        </div>
+      </div>
+      <p class="text-xl text-[rgb(var(--color-text-secondary))]">
+        Aprende cómo planificar, organizar y mantener proyectos como un profesional.
+      </p>
+    </div>
+
+    <section class="mb-16">
+      <h2>¿Qué son las Metodologías Profesionales?</h2>
+      
+      <div class="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 p-6 rounded-lg mb-6">
+        <h3 class="text-lg font-semibold mb-4">🏗️ Construir software es como construir una casa</h3>
+        
+        <p class="mb-4">
+          Imagina que vas a construir una casa. ¿Simplemente empiezas a poner ladrillos donde sea? ¡No! Necesitas:
+        </p>
+        
+        <div class="grid md:grid-cols-2 gap-4 mb-4">
+          <div class="bg-white dark:bg-gray-800 p-4 rounded">
+            <p class="font-semibold text-red-600 mb-2">❌ Sin metodología:</p>
+            <ul class="text-sm space-y-1">
+              <li>• Empiezas sin planos</li>
+              <li>• No sabes dónde va cada cosa</li>
+              <li>• Te olvidas de cosas importantes</li>
+              <li>• Es difícil trabajar en equipo</li>
+              <li>• La casa se cae o tiene problemas</li>
+            </ul>
+          </div>
+          
+          <div class="bg-white dark:bg-gray-800 p-4 rounded">
+            <p class="font-semibold text-green-600 mb-2">✅ Con metodología:</p>
+            <ul class="text-sm space-y-1">
+              <li>• Tienes planos claros</li>
+              <li>• Todo está organizado</li>
+              <li>• El equipo sabe qué hacer</li>
+              <li>• Detectas problemas rápido</li>
+              <li>• La casa es sólida y mantenible</li>
+            </ul>
+          </div>
+        </div>
+        
+        <p class="text-sm">
+          Las <strong>metodologías profesionales</strong> son las "reglas del juego" que usan los programadores profesionales 
+          para organizar su código, trabajar en equipo y asegurarse de que todo funcione bien.
+        </p>
+      </div>
+    </section>
+
+    <section class="mb-16">
+      <h2>Arquitectura de Archivos</h2>
+      
+      <div class="bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 p-6 rounded-lg mb-6">
+        <h3 class="text-lg font-semibold mb-4">📁 ¿Qué es la arquitectura de archivos?</h3>
+        
+        <p class="mb-4">
+          Es cómo <strong>organizas las carpetas y archivos</strong> de tu proyecto. Como organizar tu habitación o tu escritorio.
+        </p>
+        
+        <div class="bg-white dark:bg-gray-800 p-4 rounded mb-4">
+          <p class="font-semibold mb-3">🏠 Analogía del armario:</p>
+          <div class="space-y-2 text-sm">
+            <div class="flex gap-3">
+              <span class="text-red-600">❌</span>
+              <p><strong>Mal organizado:</strong> Toda la ropa revuelta en un cajón. Tardas 10 minutos en encontrar una camisa.</p>
+            </div>
+            <div class="flex gap-3">
+              <span class="text-green-600">✅</span>
+              <p><strong>Bien organizado:</strong> Camisas en un cajón, pantalones en otro, ropa interior aparte. Encuentras todo en segundos.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <h3>Estructura Básica de un Proyecto</h3>
+      
+      <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg mb-6">
+        <p class="font-semibold mb-4">📂 Estructura típica de Astro:</p>
+        <pre class="text-sm bg-white dark:bg-gray-900 p-4 rounded overflow-x-auto"><code>mi-proyecto/
+├── src/
+│   ├── components/     ← Componentes reutilizables (botones, cards, etc.)
+│   ├── layouts/        ← Plantillas de página (header, footer, etc.)
+│   ├── pages/          ← Páginas de tu sitio (cada archivo = una URL)
+│   ├── styles/         ← CSS global y variables
+│   └── utils/          ← Funciones de ayuda (helpers)
+├── public/             ← Imágenes, fonts, archivos estáticos
+├── package.json        ← Lista de dependencias del proyecto
+└── astro.config.mjs    ← Configuración de Astro</code></pre>
+      </div>
+      
+      <h3>Reglas de Oro para Organizar Archivos</h3>
+      
+      <div class="space-y-4">
+        <div class="card bg-blue-50 dark:bg-blue-900/20">
+          <div class="flex items-start gap-3">
+            <span class="text-2xl">1️⃣</span>
+            <div>
+              <p class="font-semibold text-blue-600 mb-2">Agrupa por funcionalidad, no por tipo</p>
+              <div class="text-sm space-y-2">
+                <div class="bg-red-50 dark:bg-red-900/30 p-3 rounded">
+                  <p class="font-semibold text-red-600 mb-1">❌ Malo:</p>
+                  <code class="text-xs">components/Button.tsx<br/>components/Card.tsx<br/>styles/button.css<br/>styles/card.css</code>
+                  <p class="mt-2 text-xs">Todo separado, difícil de mantener</p>
+                </div>
+                <div class="bg-green-50 dark:bg-green-900/30 p-3 rounded">
+                  <p class="font-semibold text-green-600 mb-1">✅ Bueno:</p>
+                  <code class="text-xs">components/Button/<br/>  Button.tsx<br/>  Button.module.css<br/>components/Card/<br/>  Card.tsx<br/>  Card.module.css</code>
+                  <p class="mt-2 text-xs">Todo relacionado junto, fácil de encontrar</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card bg-green-50 dark:bg-green-900/20">
+          <div class="flex items-start gap-3">
+            <span class="text-2xl">2️⃣</span>
+            <div>
+              <p class="font-semibold text-green-600 mb-2">Nombres descriptivos y consistentes</p>
+              <div class="text-sm space-y-2">
+                <div class="bg-red-50 dark:bg-red-900/30 p-3 rounded">
+                  <p class="font-semibold text-red-600 mb-1">❌ Malo:</p>
+                  <code class="text-xs">btn.tsx, card2.tsx, utils.js, helper.ts</code>
+                  <p class="mt-2 text-xs">¿Qué hace cada archivo? Imposible saberlo</p>
+                </div>
+                <div class="bg-green-50 dark:bg-green-900/30 p-3 rounded">
+                  <p class="font-semibold text-green-600 mb-1">✅ Bueno:</p>
+                  <code class="text-xs">Button.tsx, ProductCard.tsx, formatDate.ts, validateEmail.ts</code>
+                  <p class="mt-2 text-xs">Nombres claros que describen exactamente qué es cada cosa</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card bg-purple-50 dark:bg-purple-900/20">
+          <div class="flex items-start gap-3">
+            <span class="text-2xl">3️⃣</span>
+            <div>
+              <p class="font-semibold text-purple-600 mb-2">Componentes pequeños y reutilizables</p>
+              <p class="text-sm mb-3">
+                En lugar de un componente gigante de 500 líneas, haz varios componentes pequeños que hagan una cosa cada uno.
+              </p>
+              <div class="bg-white dark:bg-gray-700 p-3 rounded text-xs">
+                <p class="font-semibold mb-2">Ejemplo: Página de producto</p>
+                <p class="mb-1">❌ Un archivo gigante: <code>ProductPage.tsx</code> (500 líneas)</p>
+                <p>✅ Dividido en piezas:</p>
+                <ul class="ml-4 mt-1">
+                  <li>• <code>ProductImage.tsx</code> (muestra la imagen)</li>
+                  <li>• <code>ProductInfo.tsx</code> (muestra precio y descripción)</li>
+                  <li>• <code>AddToCartButton.tsx</code> (botón para agregar)</li>
+                  <li>• <code>ProductReviews.tsx</code> (muestra reseñas)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card bg-yellow-50 dark:bg-yellow-900/20">
+          <div class="flex items-start gap-3">
+            <span class="text-2xl">4️⃣</span>
+            <div>
+              <p class="font-semibold text-yellow-700 dark:text-yellow-300 mb-2">Separa lógica de presentación</p>
+              <p class="text-sm mb-3">
+                No mezcles el código que hace cálculos (lógica) con el código que muestra cosas (UI).
+              </p>
+              <div class="grid md:grid-cols-2 gap-3 text-xs">
+                <div class="bg-red-50 dark:bg-red-900/30 p-3 rounded">
+                  <p class="font-semibold text-red-600 mb-1">❌ Todo mezclado:</p>
+                  <code>ProductCard.tsx: 200 líneas de lógica + HTML</code>
+                </div>
+                <div class="bg-green-50 dark:bg-green-900/30 p-3 rounded">
+                  <p class="font-semibold text-green-600 mb-1">✅ Separado:</p>
+                  <code>useProduct.ts: solo lógica<br/>ProductCard.tsx: solo UI</code>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-16">
+      <h2>Buenas Prácticas de Git</h2>
+      
+      <div class="bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20 p-6 rounded-lg mb-6">
+        <h3 class="text-lg font-semibold mb-4">🌳 ¿Qué es Git?</h3>
+        
+        <p class="mb-4">
+          <strong>Git</strong> es como una <strong>máquina del tiempo</strong> para tu código. Te permite:
+        </p>
+        
+        <ul class="space-y-2 mb-4">
+          <li>✅ Guardar "versiones" de tu código (como Save Points en un videojuego)</li>
+          <li>✅ Volver atrás si algo sale mal</li>
+          <li>✅ Ver quién cambió qué y cuándo</li>
+          <li>✅ Trabajar en equipo sin pisar el código de otros</li>
+        </ul>
+        
+        <div class="bg-white dark:bg-gray-800 p-4 rounded">
+          <p class="font-semibold mb-2">🎮 Analogía del videojuego:</p>
+          <p class="text-sm">
+            Git es como guardar tu progreso en un videojuego. Cada "commit" es un save point. 
+            Si haces algo mal, puedes volver al último save. Si quieres probar algo arriesgado, 
+            creas un "branch" (copia paralela) y experimentas sin arruinar tu partida principal.
+          </p>
+        </div>
+      </div>
+      
+      <h3>Reglas de Oro de Git</h3>
+      
+      <div class="space-y-4">
+        <div class="card bg-green-50 dark:bg-green-900/20">
+          <div class="flex items-start gap-3">
+            <span class="text-2xl">💾</span>
+            <div>
+              <p class="font-semibold text-green-600 mb-2">Commits pequeños y frecuentes</p>
+              <p class="text-sm mb-3">
+                Guarda tu progreso cada vez que completas algo pequeño. No esperes a terminar todo el proyecto.
+              </p>
+              <div class="grid md:grid-cols-2 gap-3 text-sm">
+                <div class="bg-red-50 dark:bg-red-900/30 p-3 rounded">
+                  <p class="font-semibold text-red-600 mb-1">❌ Malo:</p>
+                  <p class="text-xs">1 commit con 50 archivos cambiados: "Cambios varios"</p>
+                  <p class="text-xs mt-1 italic">Si algo falla, ¿cómo sabes qué fue?</p>
+                </div>
+                <div class="bg-green-50 dark:bg-green-900/30 p-3 rounded">
+                  <p class="font-semibold text-green-600 mb-1">✅ Bueno:</p>
+                  <p class="text-xs">10 commits pequeños: "Agregué botón", "Arreglé CSS", etc.</p>
+                  <p class="text-xs mt-1 italic">Fácil de rastrear y revertir</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card bg-blue-50 dark:bg-blue-900/20">
+          <div class="flex items-start gap-3">
+            <span class="text-2xl">✍️</span>
+            <div>
+              <p class="font-semibold text-blue-600 mb-2">Mensajes de commit descriptivos</p>
+              <p class="text-sm mb-3">
+                El mensaje del commit debe explicar <strong>QUÉ</strong> cambiaste y <strong>POR QUÉ</strong>.
+              </p>
+              <div class="space-y-3">
+                <div class="bg-red-50 dark:bg-red-900/30 p-3 rounded text-sm">
+                  <p class="font-semibold text-red-600 mb-2">❌ Mensajes malos:</p>
+                  <ul class="text-xs space-y-1">
+                    <li>• "cambios"</li>
+                    <li>• "fix"</li>
+                    <li>• "asdfjkl"</li>
+                    <li>• "no sé qué hice"</li>
+                  </ul>
+                  <p class="text-xs mt-2 italic">Inútiles - no dicen nada</p>
+                </div>
+                <div class="bg-green-50 dark:bg-green-900/30 p-3 rounded text-sm">
+                  <p class="font-semibold text-green-600 mb-2">✅ Mensajes buenos:</p>
+                  <ul class="text-xs space-y-1">
+                    <li>• "feat: agregado botón de modo oscuro"</li>
+                    <li>• "fix: corregido error de login en mobile"</li>
+                    <li>• "style: mejorado espaciado del navbar"</li>
+                    <li>• "docs: actualizada documentación de API"</li>
+                  </ul>
+                  <p class="text-xs mt-2 italic">Claros y específicos</p>
+                </div>
+                <div class="bg-blue-50 dark:bg-blue-900/30 p-3 rounded text-xs mt-3">
+                  <p class="font-semibold mb-2">📝 Convención profesional:</p>
+                  <code>tipo: descripción breve</code>
+                  <ul class="mt-2 space-y-1">
+                    <li>• <strong>feat:</strong> nueva funcionalidad</li>
+                    <li>• <strong>fix:</strong> corrección de bug</li>
+                    <li>• <strong>style:</strong> cambios de estilo/formato</li>
+                    <li>• <strong>refactor:</strong> mejora del código sin cambiar funcionalidad</li>
+                    <li>• <strong>docs:</strong> cambios en documentación</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card bg-purple-50 dark:bg-purple-900/20">
+          <div class="flex items-start gap-3">
+            <span class="text-2xl">🌿</span>
+            <div>
+              <p class="font-semibold text-purple-600 mb-2">Usa branches para features</p>
+              <p class="text-sm mb-3">
+                Un <strong>branch</strong> (rama) es una copia de tu código donde puedes experimentar sin romper lo que ya funciona.
+              </p>
+              <div class="bg-white dark:bg-gray-700 p-4 rounded text-sm">
+                <p class="font-semibold mb-3">🌳 Analogía del árbol:</p>
+                <ul class="space-y-2">
+                  <li>• <strong>main/master:</strong> El tronco principal (código estable que funciona)</li>
+                  <li>• <strong>feature/login:</strong> Una rama donde trabajas en el login</li>
+                  <li>• <strong>feature/dark-mode:</strong> Otra rama para el modo oscuro</li>
+                  <li>• Cuando terminas, "fusionas" (merge) la rama de vuelta al tronco</li>
+                </ul>
+                <div class="bg-green-50 dark:bg-green-900/30 p-3 rounded mt-3 text-xs">
+                  <p class="font-semibold mb-1">✅ Ventaja:</p>
+                  <p>Si algo sale mal en tu rama, el código principal sigue funcionando. No rompes nada.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card bg-yellow-50 dark:bg-yellow-900/20">
+          <div class="flex items-start gap-3">
+            <span class="text-2xl">🔍</span>
+            <div>
+              <p class="font-semibold text-yellow-700 dark:text-yellow-300 mb-2">Pull Requests para code review</p>
+              <p class="text-sm mb-3">
+                Un <strong>Pull Request</strong> (PR) es como pedir permiso antes de fusionar tu rama al código principal.
+              </p>
+              <div class="bg-white dark:bg-gray-700 p-3 rounded text-sm">
+                <p class="mb-2"><strong>Proceso:</strong></p>
+                <ol class="text-xs space-y-1 ml-4">
+                  <li>1. Terminas tu feature en una rama</li>
+                  <li>2. Abres un PR: "Quiero agregar esto al código principal"</li>
+                  <li>3. Otros desarrolladores revisan tu código</li>
+                  <li>4. Te dan feedback: "Cambia esto" o "Está perfecto"</li>
+                  <li>5. Una vez aprobado, se fusiona</li>
+                </ol>
+                <p class="text-xs mt-3 italic">Esto previene que código malo llegue a producción</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card bg-red-50 dark:bg-red-900/20">
+          <div class="flex items-start gap-3">
+            <span class="text-2xl">🚫</span>
+            <div>
+              <p class="font-semibold text-red-600 mb-2">.gitignore configurado correctamente</p>
+              <p class="text-sm mb-3">
+                El archivo <code>.gitignore</code> le dice a Git qué archivos <strong>NO</strong> guardar.
+              </p>
+              <div class="bg-white dark:bg-gray-700 p-3 rounded text-sm">
+                <p class="mb-2"><strong>Cosas que NUNCA debes subir a Git:</strong></p>
+                <ul class="text-xs space-y-1">
+                  <li>❌ <code>node_modules/</code> (las dependencias - ocupan mucho y se reinstalan)</li>
+                  <li>❌ <code>.env</code> (contraseñas y claves secretas)</li>
+                  <li>❌ <code>dist/</code> o <code>build/</code> (código compilado - se regenera)</li>
+                  <li>❌ Archivos personales del sistema (<code>.DS_Store</code>, <code>Thumbs.db</code>)</li>
+                </ul>
+                <div class="bg-yellow-50 dark:bg-yellow-900/30 p-2 rounded mt-3 text-xs">
+                  <strong>⚠️ Consejo de seguridad:</strong> Si subes contraseñas a Git por error, ¡están públicas para siempre! 
+                  Cambia las contraseñas inmediatamente.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-16">
+      <h2>Testing Básico</h2>
+      
+      <div class="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 p-6 rounded-lg mb-6">
+        <h3 class="text-lg font-semibold mb-4">🧪 ¿Qué es Testing?</h3>
+        
+        <p class="mb-4">
+          <strong>Testing</strong> (pruebas) es escribir código que <strong>verifica que tu código funciona correctamente</strong>. 
+          Es como un examen automático que se asegura de que todo esté bien.
+        </p>
+        
+        <div class="bg-white dark:bg-gray-800 p-4 rounded mb-4">
+          <p class="font-semibold mb-3">🏭 Analogía de la fábrica:</p>
+          <p class="text-sm mb-2">
+            Imagina una fábrica de juguetes. Antes de vender un juguete, lo prueban:
+          </p>
+          <ul class="text-sm space-y-1">
+            <li>• ¿Las ruedas giran? ✅</li>
+            <li>• ¿Los botones funcionan? ✅</li>
+            <li>• ¿Se rompe fácilmente? ❌</li>
+          </ul>
+          <p class="text-sm mt-3">
+            Testing hace lo mismo con tu código: verifica que cada función haga lo que debe hacer.
+          </p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="bg-red-50 dark:bg-red-900/20 p-4 rounded">
+            <p class="font-semibold text-red-600 mb-2">❌ Sin tests:</p>
+            <ul class="text-sm space-y-1">
+              <li>• Pruebas manualmente en el navegador</li>
+              <li>• Cada cambio = probar todo de nuevo</li>
+              <li>• Errores llegan a producción</li>
+              <li>• Miedo de cambiar código</li>
+            </ul>
+          </div>
+          
+          <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded">
+            <p class="font-semibold text-green-600 mb-2">✅ Con tests:</p>
+            <ul class="text-sm space-y-1">
+              <li>• Los tests verifican automáticamente</li>
+              <li>• Detectas errores antes de publicar</li>
+              <li>• Refactorizas con confianza</li>
+              <li>• Documentación viva del código</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <h3>Tipos de Testing</h3>
+      
+      <div class="space-y-4">
+        <div class="card bg-blue-50 dark:bg-blue-900/20">
+          <div class="flex items-start gap-3">
+            <span class="text-2xl">⚙️</span>
+            <div>
+              <p class="font-semibold text-blue-600 mb-2">Unit Tests (Pruebas Unitarias)</p>
+              <p class="text-sm mb-3">
+                Prueban funciones individuales de forma aislada. Como probar cada pieza de Lego por separado.
+              </p>
+              <div class="bg-white dark:bg-gray-700 p-3 rounded text-sm">
+                <p class="font-semibold mb-2">Ejemplo:</p>
+                <code class="text-xs">
+                  // Función a probar<br/>
+                  function sumar(a, b) {'{'} return a + b; {'}'}<br/>
+                  <br/>
+                  // Test<br/>
+                  expect(sumar(2, 3)).toBe(5); // ✅ Pasa<br/>
+                  expect(sumar(0, 0)).toBe(0); // ✅ Pasa
+                </code>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card bg-purple-50 dark:bg-purple-900/20">
+          <div class="flex items-start gap-3">
+            <span class="text-2xl">🧩</span>
+            <div>
+              <p class="font-semibold text-purple-600 mb-2">Integration Tests (Pruebas de Integración)</p>
+              <p class="text-sm mb-3">
+                Prueban cómo funcionan varias piezas juntas. Como probar si las piezas de Lego encajan entre sí.
+              </p>
+              <div class="bg-white dark:bg-gray-700 p-3 rounded text-xs">
+                <p>Ejemplo: Probar que el botón de login envía los datos al servidor y muestra el mensaje correcto.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card bg-green-50 dark:bg-green-900/20">
+          <div class="flex items-start gap-3">
+            <span class="text-2xl">🌐</span>
+            <div>
+              <p class="font-semibold text-green-600 mb-2">E2E Tests (End-to-End / De punta a punta)</p>
+              <p class="text-sm mb-3">
+                Simulan un usuario real usando toda tu aplicación. Como si un robot siguiera los pasos de un usuario.
+              </p>
+              <div class="bg-white dark:bg-gray-700 p-3 rounded text-xs">
+                <p class="mb-2">Ejemplo de flujo E2E:</p>
+                <ol class="ml-4 space-y-1">
+                  <li>1. Abre la página de login</li>
+                  <li>2. Escribe usuario y contraseña</li>
+                  <li>3. Hace clic en "Entrar"</li>
+                  <li>4. Verifica que llegó al dashboard</li>
+                  <li>5. Cierra sesión</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <h3 class="mt-8">Herramientas de Testing para Aprender</h3>
+      
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="card bg-gradient-to-br from-green-500/10 to-emerald-500/10">
+          <h4 class="font-semibold text-green-600 mb-2">Vitest</h4>
+          <p class="text-sm">Framework de testing para unit e integration tests. Súper rápido y fácil de usar.</p>
+          <p class="text-xs mt-2 text-gray-600">Recomendado para: Astro, Vue, React</p>
+        </div>
+        
+        <div class="card bg-gradient-to-br from-blue-500/10 to-cyan-500/10">
+          <h4 class="font-semibold text-blue-600 mb-2">Testing Library</h4>
+          <p class="text-sm">Para probar componentes de React/Vue simulando interacciones de usuario.</p>
+          <p class="text-xs mt-2 text-gray-600">Recomendado para: Componentes UI</p>
+        </div>
+        
+        <div class="card bg-gradient-to-br from-purple-500/10 to-pink-500/10">
+          <h4 class="font-semibold text-purple-600 mb-2">Playwright</h4>
+          <p class="text-sm">Para E2E tests. Abre un navegador real y simula usuarios reales.</p>
+          <p class="text-xs mt-2 text-gray-600">Recomendado para: Tests completos de flujo</p>
+        </div>
+      </div>
+      
+      <div class="bg-yellow-50 dark:bg-yellow-900/20 p-6 rounded-lg mt-6">
+        <h4 class="font-semibold mb-3">💡 ¿Necesitas tests desde el principio?</h4>
+        <p class="text-sm mb-3">
+          <strong>No</strong>, si estás empezando. Primero aprende a hacer que tu código funcione. 
+          Luego, cuando tengas más experiencia, aprende testing.
+        </p>
+        <p class="text-sm">
+          Pero en trabajos profesionales, <strong>sí necesitarás saber testing</strong>. 
+          Es una habilidad que todos los programadores profesionales tienen.
+        </p>
+      </div>
+    </section>
+
+    <!-- Git & Terminal Cheat Sheet -->
+    <section class="mb-16">
+      <h2 class="flex items-center space-x-3">
+        <span class="text-2xl">🌳</span>
+        <span>Git Cheat Sheet</span>
+      </h2>
+      
+      <div class="card mb-6">
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <h4 class="font-semibold text-purple-600 mb-2">Configuración Inicial</h4>
+            <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded text-xs space-y-1">
+              <p><code>git config --global user.name "Tu Nombre"</code></p>
+              <p><code>git config --global user.email "email@ejemplo.com"</code></p>
+              <p><code>git init</code> - Iniciar repositorio</p>
+              <p><code>git clone url</code> - Clonar repo</p>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="font-semibold text-purple-600 mb-2">Básicos</h4>
+            <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded text-xs space-y-1">
+              <p><code>git status</code> - Ver estado</p>
+              <p><code>git add .</code> - Agregar todos</p>
+              <p><code>git add archivo.js</code> - Agregar uno</p>
+              <p><code>git commit -m "mensaje"</code></p>
+              <p><code>git push</code> - Subir cambios</p>
+              <p><code>git pull</code> - Bajar cambios</p>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="font-semibold text-purple-600 mb-2">Branches</h4>
+            <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded text-xs space-y-1">
+              <p><code>git branch</code> - Ver branches</p>
+              <p><code>git branch nombre</code> - Crear</p>
+              <p><code>git checkout nombre</code> - Cambiar</p>
+              <p><code>git checkout -b nombre</code> - Crear y cambiar</p>
+              <p><code>git merge nombre</code> - Fusionar</p>
+              <p><code>git branch -d nombre</code> - Borrar</p>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="font-semibold text-purple-600 mb-2">Útiles</h4>
+            <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded text-xs space-y-1">
+              <p><code>git log</code> - Ver historial</p>
+              <p><code>git log --oneline</code> - Resumido</p>
+              <p><code>git diff</code> - Ver cambios</p>
+              <p><code>git reset --hard HEAD</code> - Descartar todo</p>
+              <p><code>git stash</code> - Guardar temporal</p>
+              <p><code>git stash pop</code> - Recuperar</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="flex items-center space-x-3 mt-8">
+        <span class="text-2xl">💻</span>
+        <span>Terminal/CMD Cheat Sheet</span>
+      </h2>
+
+      <div class="card">
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <h4 class="font-semibold text-green-600 mb-2">Navegación</h4>
+            <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded text-xs space-y-1">
+              <p><code>cd carpeta</code> - Entrar a carpeta</p>
+              <p><code>cd ..</code> - Subir un nivel</p>
+              <p><code>cd ~</code> - Ir a home</p>
+              <p><code>pwd</code> - Ver ubicación actual</p>
+              <p><code>ls</code> o <code>dir</code> - Listar archivos</p>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="font-semibold text-green-600 mb-2">Archivos y Carpetas</h4>
+            <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded text-xs space-y-1">
+              <p><code>mkdir nombre</code> - Crear carpeta</p>
+              <p><code>touch archivo.txt</code> - Crear archivo</p>
+              <p><code>rm archivo</code> - Borrar archivo</p>
+              <p><code>rm -rf carpeta</code> - Borrar carpeta</p>
+              <p><code>cp origen destino</code> - Copiar</p>
+              <p><code>mv origen destino</code> - Mover/Renombrar</p>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="font-semibold text-green-600 mb-2">NPM</h4>
+            <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded text-xs space-y-1">
+              <p><code>npm init</code> - Crear package.json</p>
+              <p><code>npm install</code> - Instalar dependencias</p>
+              <p><code>npm install paquete</code> - Instalar uno</p>
+              <p><code>npm run dev</code> - Correr script dev</p>
+              <p><code>npm run build</code> - Construir proyecto</p>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="font-semibold text-green-600 mb-2">Útiles</h4>
+            <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded text-xs space-y-1">
+              <p><code>clear</code> o <code>cls</code> - Limpiar terminal</p>
+              <p><code>code .</code> - Abrir VS Code</p>
+              <p><code>Ctrl+C</code> - Detener proceso</p>
+              <p><code>Tab</code> - Autocompletar</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="flex justify-between pt-8 border-t border-[rgb(var(--color-border))]">
+      <a href="/curso/performance" class="btn btn-secondary">← Performance</a>
+      <a href="/ejercicios" class="btn btn-primary">Siguiente: Ejercicios →</a>
+    </div>
+  </div>
+</CourseLayout>

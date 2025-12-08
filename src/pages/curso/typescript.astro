@@ -1,0 +1,480 @@
+---
+import CourseLayout from '../../layouts/CourseLayout.astro';
+import CodeBlock from '../../components/CodeBlock';
+import { FileType } from 'lucide-react';
+---
+
+<CourseLayout title="TypeScript | UXnicorp Academy">
+  <div class="prose-custom max-w-4xl">
+    <div class="mb-12">
+      <div class="flex items-center space-x-3 mb-4">
+        <div class="w-12 h-12 rounded-xl bg-primary-500/10 flex items-center justify-center">
+          <FileType className="w-6 h-6 text-primary-600 dark:text-primary-400" />
+        </div>
+        <div>
+          <p class="text-sm text-blue-600 dark:text-blue-400 font-medium">Módulo 8</p>
+          <h1 class="text-4xl font-bold m-0">TypeScript para Astro y React</h1>
+        </div>
+      </div>
+      <p class="text-xl text-[rgb(var(--color-text-secondary))]">
+        Añade type safety a tus proyectos para detectar errores antes de tiempo.
+      </p>
+    </div>
+
+    <section class="mb-16">
+      <h2>¿Qué es TypeScript y por qué existe?</h2>
+      
+      <div class="bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-900/20 dark:to-primary-800/20 p-6 rounded-lg mb-6">
+        <h3 class="text-lg font-semibold mb-4">🤔 El problema con JavaScript normal</h3>
+        
+        <p class="mb-4">
+          Imagina que estás escribiendo una carta a mano. Puedes escribir lo que quieras, pero si cometes un error de ortografía, 
+          nadie te avisa hasta que alguien la lee y te dice "oye, aquí hay un error".
+        </p>
+        
+        <div class="bg-red-50 dark:bg-red-900/20 p-4 rounded mb-4">
+          <p class="font-semibold text-red-600 mb-2">❌ JavaScript normal:</p>
+          <div class="bg-white dark:bg-gray-800 p-3 rounded mb-2">
+            <code class="text-sm">
+              let edad = "25";<br/>
+              console.log(edad + 5); // Resultado: "255" 🤯
+            </code>
+          </div>
+          <p class="text-sm">JavaScript pensó que querías unir textos, no sumar números. ¡Error silencioso!</p>
+        </div>
+        
+        <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded">
+          <p class="font-semibold text-green-600 mb-2">✅ Con TypeScript:</p>
+          <div class="bg-white dark:bg-gray-800 p-3 rounded mb-2">
+            <code class="text-sm">
+              let edad: number = "25"; // ❌ ERROR inmediato<br/>
+              // TypeScript te dice: "¡Espera! edad debe ser un número, no texto"
+            </code>
+          </div>
+          <p class="text-sm">Te atrapa el error ANTES de que causes problemas. Como un corrector ortográfico.</p>
+        </div>
+      </div>
+      
+      <div class="card bg-gradient-to-br from-primary-500/5 to-primary-600/5 mb-6">
+        <h4 class="font-semibold mb-3">📝 ¿Qué es TypeScript?</h4>
+        <p class="mb-3">
+          <strong>TypeScript</strong> es JavaScript + un sistema de <strong>tipos</strong>. 
+          Es como JavaScript con un asistente que revisa tu código y te avisa de errores <strong>mientras escribes</strong>, 
+          no cuando ya está publicado.
+        </p>
+        <p class="text-sm text-gray-600 dark:text-gray-400">
+          Fue creado por Microsoft. Todo código TypeScript se convierte en JavaScript al final, 
+          así que funciona en todos los navegadores.
+        </p>
+      </div>
+      
+      <div class="bg-yellow-50 dark:bg-yellow-900/20 p-4 rounded mb-6">
+        <p class="font-semibold mb-2">🎯 Analogía perfecta:</p>
+        <ul class="text-sm space-y-2">
+          <li>📝 <strong>JavaScript:</strong> Escribir sin corrector ortográfico - rápido pero peligroso</li>
+          <li>✅ <strong>TypeScript:</strong> Escribir con corrector que subraya errores en rojo - te ayuda a evitar problemas</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="mb-16">
+      <h2>Tipos Básicos</h2>
+      
+      <div class="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 p-6 rounded-lg mb-6">
+        <h3 class="text-lg font-semibold mb-4">🏷️ ¿Qué es un "tipo"?</h3>
+        
+        <p class="mb-4">
+          Un <strong>tipo</strong> es como una etiqueta que le pones a una variable para decir <strong>qué clase de información guarda</strong>.
+        </p>
+        
+        <div class="grid md:grid-cols-3 gap-4">
+          <div class="bg-white dark:bg-gray-800 p-4 rounded">
+            <p class="font-semibold text-blue-600 mb-2">📝 string</p>
+            <p class="text-sm">Texto - palabras, frases</p>
+            <code class="text-xs">"Hola", "Ana", "123"</code>
+          </div>
+          
+          <div class="bg-white dark:bg-gray-800 p-4 rounded">
+            <p class="font-semibold text-green-600 mb-2">🔢 number</p>
+            <p class="text-sm">Números - enteros, decimales</p>
+            <code class="text-xs">42, 3.14, -10</code>
+          </div>
+          
+          <div class="bg-white dark:bg-gray-800 p-4 rounded">
+            <p class="font-semibold text-purple-600 mb-2">✅ boolean</p>
+            <p class="text-sm">Verdadero o Falso</p>
+            <code class="text-xs">true, false</code>
+          </div>
+        </div>
+      </div>
+      
+      <p class="mb-4">
+        En TypeScript, declaras el tipo de una variable con <strong>dos puntos</strong> <code>:</code> después del nombre:
+      </p>
+      
+      <CodeBlock 
+        client:load
+        language="typescript"
+        code={`// Tipos primitivos
+const nombre: string = "Ana";
+const edad: number = 25;
+const activo: boolean = true;
+
+// Arrays
+const numeros: number[] = [1, 2, 3];
+const palabras: Array<string> = ["hola", "mundo"];
+
+// Objetos
+interface Usuario {
+  nombre: string;
+  edad: number;
+  email?: string; // opcional
+}
+
+const usuario: Usuario = {
+  nombre: "Ana",
+  edad: 25
+};`}
+      />
+      
+      <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg mt-6">
+        <h4 class="text-lg font-semibold mb-4">🔍 Explicación línea por línea:</h4>
+        
+        <div class="space-y-4">
+          <div class="border-l-4 border-blue-500 pl-4">
+            <code class="text-sm font-semibold">const nombre: string = "Ana";</code>
+            <p class="text-sm mt-2">
+              <strong>nombre</strong> es una variable que SOLO puede guardar texto (string). 
+              Si intentas poner un número, TypeScript te detiene.
+            </p>
+          </div>
+          
+          <div class="border-l-4 border-green-500 pl-4">
+            <code class="text-sm font-semibold">const numeros: number[] = [1, 2, 3];</code>
+            <p class="text-sm mt-2">
+              <strong>numeros</strong> es un array (lista) que SOLO puede contener números. 
+              Los corchetes <code>[]</code> significan "array de".
+            </p>
+            <p class="text-xs mt-1 text-gray-600">
+              También puedes escribirlo como: <code>Array&lt;number&gt;</code> - es lo mismo, dos formas de decir lo mismo.
+            </p>
+          </div>
+          
+          <div class="border-l-4 border-purple-500 pl-4">
+            <code class="text-sm font-semibold">interface Usuario {'{'} ... {'}'}</code>
+            <p class="text-sm mt-2">
+              Una <strong>interface</strong> es como un molde o plantilla. Define la forma que debe tener un objeto.
+            </p>
+            <p class="text-xs mt-1 text-gray-600">
+              Piensa en ello como un formulario: "Todo Usuario debe tener nombre (texto), edad (número), y opcionalmente email".
+            </p>
+          </div>
+          
+          <div class="border-l-4 border-yellow-500 pl-4">
+            <code class="text-sm font-semibold">email?: string;</code>
+            <p class="text-sm mt-2">
+              El signo <code>?</code> significa <strong>opcional</strong>. Este campo puede existir o no. 
+              Sin el <code>?</code>, TypeScript te obligaría a incluirlo siempre.
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded mt-6">
+        <p class="font-semibold mb-2">💡 ¿Por qué usar tipos?</p>
+        <p class="text-sm mb-3">
+          Imagina que tienes una función que suma dos números. Sin tipos, alguien podría pasarle texto por accidente:
+        </p>
+        <div class="grid md:grid-cols-2 gap-4 text-sm">
+          <div class="bg-red-100 dark:bg-red-900/30 p-3 rounded">
+            <p class="font-semibold text-red-700 dark:text-red-300 mb-1">Sin TypeScript:</p>
+            <code>sumar("5", "3")</code>
+            <p class="mt-1">Resultado: "53" 🤦 (unió texto)</p>
+          </div>
+          <div class="bg-green-100 dark:bg-green-900/30 p-3 rounded">
+            <p class="font-semibold text-green-700 dark:text-green-300 mb-1">Con TypeScript:</p>
+            <code>sumar("5", "3")</code>
+            <p class="mt-1">❌ ERROR: "Los parámetros deben ser números"</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-16">
+      <h2>Props Tipadas en React</h2>
+      
+      <div class="bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20 p-6 rounded-lg mb-6">
+        <h3 class="text-lg font-semibold mb-4">🎁 ¿Qué son las Props?</h3>
+        
+        <p class="mb-4">
+          <strong>Props</strong> (abreviatura de "properties" = propiedades) son como los <strong>argumentos o parámetros</strong> que le pasas a un componente de React.
+        </p>
+        
+        <div class="bg-white dark:bg-gray-800 p-4 rounded mb-4">
+          <p class="font-semibold mb-2">🎯 Analogía:</p>
+          <p class="text-sm mb-3">
+            Imagina que un componente es una <strong>máquina de hacer sándwiches</strong>. Las props son los ingredientes que le das:
+          </p>
+          <ul class="text-sm space-y-1">
+            <li>• Le das: pan, jamón, queso (props)</li>
+            <li>• La máquina: hace el sándwich (componente)</li>
+            <li>• Obtienes: un sándwich de jamón y queso (resultado)</li>
+          </ul>
+        </div>
+        
+        <p class="mb-4">
+          Sin TypeScript, la máquina aceptaría cualquier cosa (¿arena? ¿zapatos?). 
+          Con TypeScript, defines exactamente qué ingredientes acepta.
+        </p>
+      </div>
+      
+      <h3>Ejemplo: Botón con Props Tipadas</h3>
+      
+      <p class="mb-4">
+        Vamos a crear un componente de botón que acepta configuración específica:
+      </p>
+      
+      <CodeBlock 
+        client:load
+        language="typescript"
+        filename="Button.tsx"
+        code={`interface ButtonProps {
+  text: string;
+  onClick: () => void;
+  variant?: 'primary' | 'secondary';
+}
+
+export default function Button({ text, onClick, variant = 'primary' }: ButtonProps) {
+  return (
+    <button onClick={onClick} className={\`btn btn-\${variant}\`}>
+      {text}
+    </button>
+  );
+}`}
+      />
+      
+      <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg mt-6">
+        <h4 class="text-lg font-semibold mb-4">🔍 Desglosando el código:</h4>
+        
+        <div class="space-y-4">
+          <div class="bg-white dark:bg-gray-700 p-4 rounded">
+            <code class="text-sm font-semibold text-blue-600">interface ButtonProps {'{'}</code>
+            <p class="text-sm mt-2">
+              Definimos la "receta" de ingredientes que acepta nuestro botón. Es como escribir en la máquina: 
+              "Solo acepto estos ingredientes específicos".
+            </p>
+          </div>
+          
+          <div class="bg-white dark:bg-gray-700 p-4 rounded">
+            <code class="text-sm font-semibold text-green-600">text: string;</code>
+            <p class="text-sm mt-2">
+              El botón DEBE recibir un texto (string). Sin texto, no hay botón. Es obligatorio.
+            </p>
+            <p class="text-xs text-gray-600 mt-1">Ejemplo: <code>text="Enviar"</code></p>
+          </div>
+          
+          <div class="bg-white dark:bg-gray-700 p-4 rounded">
+            <code class="text-sm font-semibold text-purple-600">onClick: () =&gt; void;</code>
+            <p class="text-sm mt-2">
+              Una <strong>función</strong> que se ejecuta cuando haces clic. <code>() =&gt; void</code> significa: 
+              "una función que no recibe parámetros y no devuelve nada".
+            </p>
+            <p class="text-xs text-gray-600 mt-1">Ejemplo: <code>onClick={'{'}{'}'}() =&gt; console.log('Click!'){'}'}{'}'}</code></p>
+          </div>
+          
+          <div class="bg-white dark:bg-gray-700 p-4 rounded">
+            <code class="text-sm font-semibold text-orange-600">variant?: 'primary' | 'secondary';</code>
+            <p class="text-sm mt-2 mb-2">
+              El <code>?</code> lo hace <strong>opcional</strong>. El <code>|</code> significa "o". 
+              Solo puede ser "primary" o "secondary", nada más.
+            </p>
+            <div class="bg-yellow-50 dark:bg-yellow-900/30 p-2 rounded text-xs">
+              <p class="font-semibold mb-1">Esto se llama "Union Type":</p>
+              <p>Es como decir: "puede ser rojo O azul, pero nunca verde"</p>
+            </div>
+          </div>
+          
+          <div class="bg-white dark:bg-gray-700 p-4 rounded">
+            <code class="text-sm font-semibold text-pink-600">variant = 'primary'</code>
+            <p class="text-sm mt-2">
+              Valor por defecto. Si no le pasas variant, usa 'primary' automáticamente. 
+              Es como un ingrediente que ya viene incluido si no especificas otro.
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <h3 class="mt-8">Usando el Botón</h3>
+      
+      <p class="mb-4">Así es como usarías este botón en tu código:</p>
+      
+      <CodeBlock 
+        client:load
+        language="typescript"
+        code={`// ✅ Correcto
+<Button 
+  text="Enviar" 
+  onClick={() => alert('Enviado!')} 
+/>
+
+// ✅ También correcto - especificando variant
+<Button 
+  text="Cancelar" 
+  onClick={() => alert('Cancelado!')} 
+  variant="secondary"
+/>
+
+// ❌ ERROR - falta onClick (es obligatorio)
+<Button text="Enviar" />
+
+// ❌ ERROR - variant solo puede ser 'primary' o 'secondary'
+<Button text="Enviar" onClick={() => {}} variant="danger" />`}
+      />
+      
+      <div class="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-lg mt-6">
+        <h4 class="font-semibold mb-3">🎓 Resumen: ¿Por qué tipar las props?</h4>
+        <ul class="text-sm space-y-2">
+          <li>✅ <strong>Previene errores:</strong> No puedes pasar datos incorrectos</li>
+          <li>✅ <strong>Auto-completado:</strong> Tu editor te muestra qué props existen mientras escribes</li>
+          <li>✅ <strong>Documentación automática:</strong> Otros desarrolladores ven exactamente qué necesita el componente</li>
+          <li>✅ <strong>Refactorización segura:</strong> Si cambias una prop, TypeScript te avisa dónde más debes actualizar</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- TypeScript Cheat Sheet -->
+    <section class="mb-16">
+      <h2 class="flex items-center space-x-3">
+        <span class="text-2xl">📘</span>
+        <span>TypeScript Cheat Sheet</span>
+      </h2>
+      
+      <div class="card">
+        <div class="space-y-4">
+          <div class="grid md:grid-cols-2 gap-4">
+            <div>
+              <h4 class="font-semibold text-blue-600 mb-2">Tipos Básicos</h4>
+              <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded text-xs space-y-1">
+                <p><code>let nombre: string = "Ana";</code></p>
+                <p><code>let edad: number = 25;</code></p>
+                <p><code>let activo: boolean = true;</code></p>
+                <p><code>let nulo: null = null;</code></p>
+                <p><code>let indefinido: undefined;</code></p>
+                <p><code>let cualquiera: any;</code> - ❌ Evitar</p>
+              </div>
+            </div>
+
+            <div>
+              <h4 class="font-semibold text-blue-600 mb-2">Arrays y Objetos</h4>
+              <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded text-xs space-y-1">
+                <p><code>let nums: number[] = [1, 2, 3];</code></p>
+                <p><code>{"let user: { name: string; age: number; }"}</code></p>
+                <p><code>let mixed: (string | number)[];</code></p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="font-semibold text-blue-600 mb-2">Interfaces</h4>
+            <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded font-mono text-xs">
+              <pre>{`interface Usuario {
+  nombre: string;
+  edad: number;
+  email?: string;  // Opcional
+  readonly id: number;  // Solo lectura
+}
+
+const usuario: Usuario = {
+  nombre: "Ana",
+  edad: 25,
+  id: 1
+};`}</pre>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="font-semibold text-blue-600 mb-2">Type Aliases</h4>
+            <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded font-mono text-xs">
+              <pre>{`type ID = string | number;
+type Estado = "pendiente" | "completado" | "cancelado";
+
+let taskId: ID = 123;
+let status: Estado = "pendiente";`}</pre>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-4">
+            <div>
+              <h4 class="font-semibold text-blue-600 mb-2">Funciones</h4>
+              <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded font-mono text-xs">
+                <pre>{`function sumar(a: number, b: number): number {
+  return a + b;
+}
+
+const restar = (a: number, b: number): number => a - b;`}</pre>
+              </div>
+            </div>
+
+            <div>
+              <h4 class="font-semibold text-blue-600 mb-2">Union Types</h4>
+              <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded font-mono text-xs">
+                <pre>{`type Respuesta = string | number | boolean;
+
+function procesar(data: string | number) {
+  if (typeof data === "string") {
+    return data.toUpperCase();
+  }
+  return data * 2;
+}`}</pre>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="font-semibold text-blue-600 mb-2">Generics</h4>
+            <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded font-mono text-xs">
+              <pre>{`function primero<T>(arr: T[]): T | undefined {
+  return arr[0];
+}
+
+const num = primero([1, 2, 3]);  // number
+const str = primero(["a", "b"]);  // string`}</pre>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="font-semibold text-blue-600 mb-2">Utility Types</h4>
+            <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded text-xs space-y-1">
+              <p><code>{"Partial<User>"}</code> - Todas las props opcionales</p>
+              <p><code>{"Required<User>"}</code> - Todas las props requeridas</p>
+              <p><code>{"Pick<User, 'name' | 'email'>"}</code> - Solo ciertas props</p>
+              <p><code>{"Omit<User, 'password'>"}</code> - Excluir props</p>
+              <p><code>{"Readonly<User>"}</code> - Solo lectura</p>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="font-semibold text-blue-600 mb-2">Props de React/Astro</h4>
+            <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded font-mono text-xs">
+              <pre>{`interface ButtonProps {
+  text: string;
+  onClick?: () => void;
+  variant?: "primary" | "secondary";
+  disabled?: boolean;
+}
+
+function Button({ text, onClick, variant = "primary" }: ButtonProps) {
+  // ...
+}`}</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="flex justify-between pt-8 border-t border-[rgb(var(--color-border))]">
+      <a href="/curso/react-islands" class="btn btn-secondary">← React Islands</a>
+      <a href="/curso/performance" class="btn btn-primary">Siguiente: Performance →</a>
+    </div>
+  </div>
+</CourseLayout>

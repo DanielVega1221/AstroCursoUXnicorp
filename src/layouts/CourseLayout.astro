@@ -1,0 +1,34 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Sidebar from '../components/Sidebar.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  showSidebar?: boolean;
+}
+
+const { 
+  title,
+  description,
+  showSidebar = true 
+} = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <Navbar />
+  
+  {showSidebar && <Sidebar />}
+  
+  <div class={showSidebar ? 'lg:ml-72' : ''}>
+    <main class="min-h-[calc(100vh-12rem)]">
+      <div class="container-custom py-8">
+        <slot />
+      </div>
+    </main>
+
+    <Footer />
+  </div>
+</BaseLayout>

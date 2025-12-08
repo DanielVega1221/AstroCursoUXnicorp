@@ -1,0 +1,63 @@
+---
+import { Linkedin, Instagram } from 'lucide-react';
+---
+
+<footer class="bg-[rgb(var(--color-bg-secondary))] border-t border-[rgb(var(--color-border))] mt-20">
+  <div class="container-custom py-12">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <!-- Brand -->
+      <div class="space-y-4">
+        <div class="flex flex-col">
+          <span class="font-bold text-lg">UXnicorp</span>
+          <span class="text-xs text-[rgb(var(--color-text-secondary))]">Academy</span>
+        </div>
+        <p class="text-sm text-[rgb(var(--color-text-secondary))]">
+          Aprende desarrollo web moderno desde cero hasta experto.
+        </p>
+      </div>
+
+      <!-- Curso -->
+      <div>
+        <h4 class="font-semibold mb-4">Curso</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/curso/fundamentos" class="text-[rgb(var(--color-text-secondary))] hover:text-primary-500 transition-colors">Fundamentos</a></li>
+          <li><a href="/curso/html" class="text-[rgb(var(--color-text-secondary))] hover:text-primary-500 transition-colors">HTML</a></li>
+          <li><a href="/curso/css" class="text-[rgb(var(--color-text-secondary))] hover:text-primary-500 transition-colors">CSS</a></li>
+          <li><a href="/curso/javascript" class="text-[rgb(var(--color-text-secondary))] hover:text-primary-500 transition-colors">JavaScript</a></li>
+          <li><a href="/curso/astro" class="text-[rgb(var(--color-text-secondary))] hover:text-primary-500 transition-colors">Astro</a></li>
+        </ul>
+      </div>
+
+      <!-- Práctica -->
+      <div>
+        <h4 class="font-semibold mb-4">Práctica</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/ejercicios" class="text-[rgb(var(--color-text-secondary))] hover:text-primary-500 transition-colors">Ejercicios</a></li>
+          <li><a href="/proyecto-final" class="text-[rgb(var(--color-text-secondary))] hover:text-primary-500 transition-colors">Proyecto Final</a></li>
+          <li><a href="/recursos" class="text-[rgb(var(--color-text-secondary))] hover:text-primary-500 transition-colors">Recursos</a></li>
+        </ul>
+      </div>
+
+      <!-- Social -->
+      <div>
+        <h4 class="font-semibold mb-4">Conecta</h4>
+        <div class="flex space-x-4">
+          <a href="https://www.linkedin.com/company/uxnicorp" target="_blank" rel="noopener noreferrer"
+             class="p-2 rounded-lg bg-[rgb(var(--color-bg-primary))] hover:bg-primary-500 hover:text-white transition-all duration-200"
+             aria-label="LinkedIn">
+            <Linkedin className="w-5 h-5" />
+          </a>
+          <a href="https://www.instagram.com/uxnicorp" target="_blank" rel="noopener noreferrer"
+             class="p-2 rounded-lg bg-[rgb(var(--color-bg-primary))] hover:bg-primary-500 hover:text-white transition-all duration-200"
+             aria-label="Instagram">
+            <Instagram className="w-5 h-5" />
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-t border-[rgb(var(--color-border))] mt-8 pt-8 text-center text-sm text-[rgb(var(--color-text-secondary))]">
+      <p>&copy; {new Date().getFullYear()} UXnicorp Academy. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>

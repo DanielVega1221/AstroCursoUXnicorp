@@ -1,0 +1,71 @@
+---
+import ThemeToggle from './ThemeToggle';
+import { Menu } from 'lucide-react';
+---
+
+<nav class="sticky top-0 z-50 bg-[rgb(var(--color-bg-primary))]/80 backdrop-blur-lg border-b border-[rgb(var(--color-border))]">
+  <div class="container-custom">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo -->
+      <a href="/" class="flex items-center space-x-3 group">
+        <div class="flex flex-col">
+          <span class="font-bold text-lg text-[rgb(var(--color-text-primary))]">UXnicorp</span>
+          <span class="text-xs text-[rgb(var(--color-text-secondary))]">Academy</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center space-x-6">
+        <a href="/curso/fundamentos" class="text-[rgb(var(--color-text-secondary))] hover:text-[rgb(var(--color-text-primary))] transition-colors">
+          Curso
+        </a>
+        <a href="/ejercicios" class="text-[rgb(var(--color-text-secondary))] hover:text-[rgb(var(--color-text-primary))] transition-colors">
+          Ejercicios
+        </a>
+        <a href="/recursos" class="text-[rgb(var(--color-text-secondary))] hover:text-[rgb(var(--color-text-primary))] transition-colors">
+          Recursos
+        </a>
+        <ThemeToggle client:load />
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button 
+        id="mobile-menu-button"
+        class="md:hidden p-2 rounded-lg hover:bg-[rgb(var(--color-bg-secondary))] transition-colors"
+        aria-label="Abrir menú"
+      >
+        <Menu className="w-6 h-6" />
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div 
+    id="mobile-menu" 
+    class="hidden md:hidden border-t border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-primary))]"
+  >
+    <div class="container-custom py-4 space-y-3">
+      <a href="/curso/fundamentos" class="block px-4 py-2 rounded-lg hover:bg-[rgb(var(--color-bg-secondary))] transition-colors">
+        Curso
+      </a>
+      <a href="/ejercicios" class="block px-4 py-2 rounded-lg hover:bg-[rgb(var(--color-bg-secondary))] transition-colors">
+        Ejercicios
+      </a>
+      <a href="/recursos" class="block px-4 py-2 rounded-lg hover:bg-[rgb(var(--color-bg-secondary))] transition-colors">
+        Recursos
+      </a>
+      <div class="px-4 py-2">
+        <ThemeToggle client:load />
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const button = document.getElementById('mobile-menu-button');
+  const menu = document.getElementById('mobile-menu');
+
+  button?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+  });
+</script>

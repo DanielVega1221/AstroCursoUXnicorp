@@ -1,0 +1,353 @@
+---
+import CourseLayout from '../../layouts/CourseLayout.astro';
+import CodeBlock from '../../components/CodeBlock';
+import { Gauge } from 'lucide-react';
+---
+
+<CourseLayout title="Performance y SEO | UXnicorp Academy">
+  <div class="prose-custom max-w-4xl">
+    <div class="mb-12">
+      <div class="flex items-center space-x-3 mb-4">
+        <div class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center">
+          <Gauge className="w-6 h-6 text-green-600 dark:text-green-400" />
+        </div>
+        <div>
+          <p class="text-sm text-green-600 dark:text-green-400 font-medium">Módulo 9</p>
+          <h1 class="text-4xl font-bold m-0">Performance y SEO</h1>
+        </div>
+      </div>
+      <p class="text-xl text-[rgb(var(--color-text-secondary))]">
+        Optimiza tus sitios para máxima velocidad y mejor posicionamiento en buscadores.
+      </p>
+    </div>
+
+    <section class="mb-16">
+      <h2>¿Qué es Performance?</h2>
+      
+      <div class="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 p-6 rounded-lg mb-6">
+        <h3 class="text-lg font-semibold mb-4">⚡ Performance = Velocidad de tu página web</h3>
+        
+        <p class="mb-4">
+          Imagina que entras a dos tiendas:
+        </p>
+        
+        <div class="grid md:grid-cols-2 gap-4 mb-4">
+          <div class="bg-red-50 dark:bg-red-900/20 p-4 rounded">
+            <p class="font-semibold text-red-600 mb-2">🐌 Tienda A (Lenta):</p>
+            <p class="text-sm">La puerta tarda 10 segundos en abrirse. Los estantes se mueven mientras caminas. 
+            Esperas 5 segundos para tocar un producto.</p>
+            <p class="text-xs mt-2 italic">Resultado: Te vas frustrado</p>
+          </div>
+          
+          <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded">
+            <p class="font-semibold text-green-600 mb-2">🚀 Tienda B (Rápida):</p>
+            <p class="text-sm">La puerta se abre al instante. Todo está en su lugar. Puedes tocar productos inmediatamente.</p>
+            <p class="text-xs mt-2 italic">Resultado: Compras feliz</p>
+          </div>
+        </div>
+        
+        <p class="text-sm">
+          <strong>Performance web</strong> es hacer que tu página sea como la Tienda B: rápida, fluida, sin esperas frustrantes.
+        </p>
+      </div>
+      
+      <div class="bg-yellow-50 dark:bg-yellow-900/20 p-4 rounded mb-6">
+        <p class="font-semibold mb-2">📊 Datos reales:</p>
+        <ul class="text-sm space-y-1">
+          <li>• Si tu página tarda más de 3 segundos en cargar, <strong>40% de usuarios se van</strong></li>
+          <li>• Cada segundo extra de carga = <strong>7% menos conversiones</strong> (ventas/registros)</li>
+          <li>• Google <strong>penaliza</strong> páginas lentas en búsquedas</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="mb-16">
+      <h2>Core Web Vitals - Las 3 Métricas Que Importan</h2>
+      
+      <div class="bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 p-6 rounded-lg mb-6">
+        <h3 class="text-lg font-semibold mb-4">🎯 ¿Qué son los Core Web Vitals?</h3>
+        
+        <p class="mb-4">
+          Son las <strong>3 métricas oficiales de Google</strong> para medir si tu página es rápida y cómoda de usar. 
+          Piensa en ellas como un examen médico de tu página web.
+        </p>
+        
+        <p class="text-sm text-gray-600 dark:text-gray-400">
+          Si apruebas estos 3 exámenes, Google considera tu sitio "saludable" y te premia con mejor posicionamiento.
+        </p>
+      </div>
+      
+      <div class="space-y-6">
+        <div class="card bg-green-50 dark:bg-green-900/20">
+          <div class="flex items-start gap-4">
+            <div class="w-16 h-16 bg-green-500 rounded-lg flex items-center justify-center text-white text-2xl font-bold flex-shrink-0">
+              LCP
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-green-600 mb-2">Largest Contentful Paint</h3>
+              <p class="text-sm mb-3">
+                <strong>¿Qué mide?</strong> Cuánto tarda en aparecer el contenido principal de tu página.
+              </p>
+              
+              <div class="bg-white dark:bg-gray-800 p-3 rounded mb-3">
+                <p class="text-sm font-semibold mb-2">🏠 Analogía:</p>
+                <p class="text-xs">
+                  Es como entrar a una casa. LCP mide cuánto tardas en ver los muebles principales (sofá, mesa). 
+                  No importan los adornos pequeños, sino lo importante.
+                </p>
+              </div>
+              
+              <div class="flex gap-3 text-sm">
+                <div class="bg-green-100 dark:bg-green-800 px-3 py-1 rounded">
+                  <strong>✅ Bueno:</strong> &lt; 2.5 segundos
+                </div>
+                <div class="bg-yellow-100 dark:bg-yellow-800 px-3 py-1 rounded">
+                  <strong>⚠️ Mejorable:</strong> 2.5 - 4s
+                </div>
+                <div class="bg-red-100 dark:bg-red-800 px-3 py-1 rounded">
+                  <strong>❌ Malo:</strong> &gt; 4s
+                </div>
+              </div>
+              
+              <div class="mt-3 text-xs bg-blue-50 dark:bg-blue-900/30 p-2 rounded">
+                <strong>Ejemplo:</strong> Si tu página tiene una foto grande como hero, LCP mide cuánto tarda en aparecer esa foto.
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card bg-blue-50 dark:bg-blue-900/20">
+          <div class="flex items-start gap-4">
+            <div class="w-16 h-16 bg-blue-500 rounded-lg flex items-center justify-center text-white text-2xl font-bold flex-shrink-0">
+              FID
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-blue-600 mb-2">First Input Delay</h3>
+              <p class="text-sm mb-3">
+                <strong>¿Qué mide?</strong> Cuánto tarda la página en responder cuando haces clic en algo por primera vez.
+              </p>
+              
+              <div class="bg-white dark:bg-gray-800 p-3 rounded mb-3">
+                <p class="text-sm font-semibold mb-2">🖱️ Analogía:</p>
+                <p class="text-xs">
+                  Es como tocar el timbre de una casa. FID mide cuánto tarda alguien en abrir la puerta después de que tocaste. 
+                  Si tarda mucho, te frustras.
+                </p>
+              </div>
+              
+              <div class="flex gap-3 text-sm">
+                <div class="bg-green-100 dark:bg-green-800 px-3 py-1 rounded">
+                  <strong>✅ Bueno:</strong> &lt; 100 milisegundos
+                </div>
+                <div class="bg-yellow-100 dark:bg-yellow-800 px-3 py-1 rounded">
+                  <strong>⚠️ Mejorable:</strong> 100 - 300ms
+                </div>
+                <div class="bg-red-100 dark:bg-red-800 px-3 py-1 rounded">
+                  <strong>❌ Malo:</strong> &gt; 300ms
+                </div>
+              </div>
+              
+              <div class="mt-3 text-xs bg-purple-50 dark:bg-purple-900/30 p-2 rounded">
+                <strong>Ejemplo:</strong> Haces clic en "Agregar al carrito". FID mide cuánto tarda en registrar tu clic y hacer algo.
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card bg-purple-50 dark:bg-purple-900/20">
+          <div class="flex items-start gap-4">
+            <div class="w-16 h-16 bg-purple-500 rounded-lg flex items-center justify-center text-white text-2xl font-bold flex-shrink-0">
+              CLS
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-purple-600 mb-2">Cumulative Layout Shift</h3>
+              <p class="text-sm mb-3">
+                <strong>¿Qué mide?</strong> Cuánto se "mueven" las cosas en tu página mientras carga.
+              </p>
+              
+              <div class="bg-white dark:bg-gray-800 p-3 rounded mb-3">
+                <p class="text-sm font-semibold mb-2">📱 Analogía:</p>
+                <p class="text-xs mb-2">
+                  Estás leyendo un artículo en tu celular. Justo cuando vas a hacer clic en un botón, 
+                  aparece un anuncio arriba y <strong>empuja todo hacia abajo</strong>. Terminas haciendo clic en algo que no querías. ¡Frustrante!
+                </p>
+                <p class="text-xs italic text-red-600">
+                  Esto es layout shift (cambio de diseño) y arruina la experiencia.
+                </p>
+              </div>
+              
+              <div class="flex gap-3 text-sm">
+                <div class="bg-green-100 dark:bg-green-800 px-3 py-1 rounded">
+                  <strong>✅ Bueno:</strong> &lt; 0.1
+                </div>
+                <div class="bg-yellow-100 dark:bg-yellow-800 px-3 py-1 rounded">
+                  <strong>⚠️ Mejorable:</strong> 0.1 - 0.25
+                </div>
+                <div class="bg-red-100 dark:bg-red-800 px-3 py-1 rounded">
+                  <strong>❌ Malo:</strong> &gt; 0.25
+                </div>
+              </div>
+              
+              <div class="mt-3 text-xs bg-orange-50 dark:bg-orange-900/30 p-2 rounded">
+                <strong>Cómo evitarlo:</strong> Siempre define width y height en imágenes. Reserva espacio para anuncios antes de que carguen.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 p-6 rounded-lg mt-6">
+        <h4 class="font-semibold mb-3">🎯 Resumen ultra-simple:</h4>
+        <ul class="text-sm space-y-2">
+          <li><strong>LCP:</strong> ¿Qué tan rápido aparece lo importante?</li>
+          <li><strong>FID:</strong> ¿Qué tan rápido responde cuando hago clic?</li>
+          <li><strong>CLS:</strong> ¿Las cosas se mueven y me frustran?</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="mb-16">
+      <h2>Optimización de Imágenes</h2>
+      
+      <div class="bg-gradient-to-r from-pink-50 to-rose-50 dark:from-pink-900/20 dark:to-rose-900/20 p-6 rounded-lg mb-6">
+        <h3 class="text-lg font-semibold mb-4">🖼️ ¿Por qué optimizar imágenes?</h3>
+        
+        <p class="mb-4">
+          Las imágenes son <strong>lo más pesado</strong> de tu página web. Una sola foto mal optimizada puede pesar más que todo tu código HTML, CSS y JavaScript juntos.
+        </p>
+        
+        <div class="grid md:grid-cols-2 gap-4 mb-4">
+          <div class="bg-red-50 dark:bg-red-900/20 p-4 rounded">
+            <p class="font-semibold text-red-600 mb-2">❌ Imagen sin optimizar:</p>
+            <ul class="text-sm space-y-1">
+              <li>• Tamaño: 5 MB</li>
+              <li>• Tiempo de carga: 8 segundos</li>
+              <li>• Usa todo tu plan de datos</li>
+              <li>• Google te penaliza</li>
+            </ul>
+          </div>
+          
+          <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded">
+            <p class="font-semibold text-green-600 mb-2">✅ Imagen optimizada:</p>
+            <ul class="text-sm space-y-1">
+              <li>• Tamaño: 100 KB (50x más ligera)</li>
+              <li>• Tiempo de carga: 0.5 segundos</li>
+              <li>• Se ve igual de bien</li>
+              <li>• Google te premia</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 p-3 rounded text-sm">
+          <strong>💡 Regla de oro:</strong> Nunca uses una imagen directamente de tu cámara o descargada de internet sin optimizar. 
+          Siempre usa herramientas de optimización.
+        </div>
+      </div>
+      
+      <h3>Componente Image de Astro</h3>
+      
+      <p class="mb-4">
+        Astro tiene un componente mágico llamado <code>&lt;Image /&gt;</code> que <strong>optimiza automáticamente</strong> tus imágenes. 
+        Es como tener un asistente que comprime y ajusta las imágenes por ti.
+      </p>
+      
+      <CodeBlock 
+        client:load
+        language="astro"
+        filename="page.astro"
+        code={`---
+import { Image } from 'astro:assets';
+import miImagen from '../assets/foto.jpg';
+---
+
+<Image 
+  src={miImagen} 
+  alt="Descripción"
+  width={800}
+  height={600}
+  loading="lazy"
+/>`}
+      />
+      
+      <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg mt-6">
+        <h4 class="text-lg font-semibold mb-4">🔍 Qué hace cada parte:</h4>
+        
+        <div class="space-y-4">
+          <div class="border-l-4 border-blue-500 pl-4">
+            <code class="text-sm font-semibold">import {'{'} Image {'}'} from 'astro:assets';</code>
+            <p class="text-sm mt-2">
+              Importas el componente especial de Astro que optimiza imágenes. No uses la etiqueta HTML <code>&lt;img&gt;</code> normal.
+            </p>
+          </div>
+          
+          <div class="border-l-4 border-green-500 pl-4">
+            <code class="text-sm font-semibold">import miImagen from '../assets/foto.jpg';</code>
+            <p class="text-sm mt-2">
+              Importas la imagen como si fuera código. Astro procesa la imagen durante la construcción (build).
+            </p>
+          </div>
+          
+          <div class="border-l-4 border-purple-500 pl-4">
+            <code class="text-sm font-semibold">src={'{miImagen}'}</code>
+            <p class="text-sm mt-2">
+              Le pasas la imagen importada. Astro la optimizará automáticamente.
+            </p>
+          </div>
+          
+          <div class="border-l-4 border-yellow-500 pl-4">
+            <code class="text-sm font-semibold">alt="Descripción"</code>
+            <p class="text-sm mt-2">
+              <strong>Siempre obligatorio.</strong> Describe qué hay en la imagen. Para personas con discapacidad visual y para SEO.
+            </p>
+          </div>
+          
+          <div class="border-l-4 border-pink-500 pl-4">
+            <code class="text-sm font-semibold">width={'{800}'} height={'{600}'}</code>
+            <p class="text-sm mt-2">
+              Define el tamaño máximo. Astro genera versiones más pequeñas automáticamente. 
+              También previene CLS (layout shift).
+            </p>
+          </div>
+          
+          <div class="border-l-4 border-red-500 pl-4">
+            <code class="text-sm font-semibold">loading="lazy"</code>
+            <p class="text-sm mt-2">
+              <strong>"Carga perezosa".</strong> La imagen solo se descarga cuando el usuario hace scroll hasta ella. 
+              Ahorra datos y acelera la carga inicial.
+            </p>
+            <div class="bg-blue-50 dark:bg-blue-900/30 p-2 rounded mt-2 text-xs">
+              <strong>Cuándo NO usar lazy:</strong> En la imagen hero (la primera grande que ves). Esa debe cargarse inmediatamente.
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-4 mt-6">
+        <div class="card bg-green-50 dark:bg-green-900/20">
+          <h4 class="font-semibold text-green-600 mb-2">✅ Lo que Astro hace por ti:</h4>
+          <ul class="text-sm space-y-1">
+            <li>• Comprime la imagen</li>
+            <li>• Genera múltiples tamaños</li>
+            <li>• Convierte a formatos modernos (WebP, AVIF)</li>
+            <li>• Sirve el tamaño correcto según el dispositivo</li>
+          </ul>
+        </div>
+        
+        <div class="card bg-blue-50 dark:bg-blue-900/20">
+          <h4 class="font-semibold text-blue-600 mb-2">📱 Resultado:</h4>
+          <ul class="text-sm space-y-1">
+            <li>• Móvil: imagen pequeña (100 KB)</li>
+            <li>• Tablet: imagen mediana (300 KB)</li>
+            <li>• Desktop: imagen grande (500 KB)</li>
+            <li>• Todos ven la imagen perfecta para su pantalla</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="flex justify-between pt-8 border-t border-[rgb(var(--color-border))]">
+      <a href="/curso/typescript" class="btn btn-secondary">← TypeScript</a>
+      <a href="/curso/metodologias" class="btn btn-primary">Siguiente: Metodologías →</a>
+    </div>
+  </div>
+</CourseLayout>

@@ -1,0 +1,512 @@
+---
+import CourseLayout from '../layouts/CourseLayout.astro';
+import CodeBlock from '../components/CodeBlock';
+import { Award, Rocket, CheckCircle, Code } from 'lucide-react';
+---
+
+<CourseLayout title="Proyecto Final: Portfolio Premium | UXnicorp Academy">
+  <div class="prose-custom max-w-4xl">
+    <div class="mb-12 animate-slide-up">
+      <div class="flex items-center space-x-3 mb-4">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center">
+          <Award className="w-6 h-6 text-white" />
+        </div>
+        <div>
+          <h1 class="text-4xl font-bold m-0">Proyecto Final: Portfolio Premium</h1>
+        </div>
+      </div>
+      <p class="text-xl text-[rgb(var(--color-text-secondary))]">
+        Construye tu portfolio profesional usando todo lo aprendido: Astro, React Islands, TypeScript, animaciones y mejores prácticas.
+      </p>
+    </div>
+
+    <!-- Objetivo -->
+    <section class="mb-16">
+      <div class="card bg-gradient-to-br from-primary-500/10 to-accent-500/10">
+        <h2 class="mt-0">🎯 Objetivo del Proyecto</h2>
+        <p>
+          Crear un <strong>portfolio premium</strong> que muestre tus habilidades como desarrollador frontend.
+          Será tu carta de presentación profesional para conseguir trabajo o clientes.
+        </p>
+      </div>
+    </section>
+
+    <!-- Requisitos -->
+    <section class="mb-16">
+      <h2 class="flex items-center space-x-3">
+        <CheckCircle className="w-8 h-8 text-green-600 dark:text-green-400" />
+        <span>Requisitos del Portfolio</span>
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="card bg-green-500/5 border-l-4 border-green-500">
+          <h3 class="text-lg font-semibold text-green-600 dark:text-green-400">Tecnologías Obligatorias</h3>
+          <ul class="text-sm space-y-1">
+            <li>✓ Astro como base</li>
+            <li>✓ React Islands para interactividad</li>
+            <li>✓ TypeScript</li>
+            <li>✓ Tailwind CSS (o CSS moderno)</li>
+            <li>✓ Framer Motion para animaciones</li>
+            <li>✓ Lenis para smooth scroll</li>
+          </ul>
+        </div>
+
+        <div class="card bg-primary-500/5 border-l-4 border-primary-500">
+          <h3 class="text-lg font-semibold text-primary-600 dark:text-primary-400">Secciones Requeridas</h3>
+          <ul class="text-sm space-y-1">
+            <li>✓ Hero impactante</li>
+            <li>✓ Sobre mí</li>
+            <li>✓ Habilidades/Tecnologías</li>
+            <li>✓ Proyectos (mínimo 3)</li>
+            <li>✓ Experiencia/Formación</li>
+            <li>✓ Formulario de contacto</li>
+            <li>✓ Footer con links sociales</li>
+          </ul>
+        </div>
+
+        <div class="card bg-purple-500/5 border-l-4 border-purple-500">
+          <h3 class="text-lg font-semibold text-purple-600 dark:text-purple-400">Funcionalidades</h3>
+          <ul class="text-sm space-y-1">
+            <li>✓ Dark/Light mode</li>
+            <li>✓ Animaciones sutiles</li>
+            <li>✓ Responsive perfecto</li>
+            <li>✓ Navegación smooth</li>
+            <li>✓ Lazy loading de imágenes</li>
+            <li>✓ SEO optimizado</li>
+          </ul>
+        </div>
+
+        <div class="card bg-orange-500/5 border-l-4 border-orange-500">
+          <h3 class="text-lg font-semibold text-orange-600 dark:text-orange-400">Extras Opcionales</h3>
+          <ul class="text-sm space-y-1">
+            <li>• Blog integrado</li>
+            <li>• Testimonios/Reviews</li>
+            <li>• Filtros de proyectos</li>
+            <li>• Cursor custom</li>
+            <li>• Transiciones de página</li>
+            <li>• Analytics integrado</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Estructura -->
+    <section class="mb-16">
+      <h2>📁 Estructura del Proyecto</h2>
+
+      <CodeBlock 
+        client:load
+        language="plaintext"
+        filename="estructura"
+        code={`portfolio/
+├── src/
+│   ├── components/
+│   │   ├── Hero.astro
+│   │   ├── About.astro
+│   │   ├── Skills.astro
+│   │   ├── Projects.astro
+│   │   ├── Contact.astro
+│   │   ├── Navbar.astro
+│   │   ├── Footer.astro
+│   │   └── react/
+│   │       ├── ThemeToggle.tsx
+│   │       ├── ProjectCard.tsx
+│   │       ├── ContactForm.tsx
+│   │       └── AnimatedSection.tsx
+│   ├── layouts/
+│   │   └── Layout.astro
+│   ├── pages/
+│   │   ├── index.astro
+│   │   └── proyectos/
+│   │       └── [slug].astro
+│   ├── styles/
+│   │   └── global.css
+│   └── data/
+│       ├── projects.ts
+│       └── skills.ts
+├── public/
+│   ├── images/
+│   └── cv.pdf
+└── astro.config.mjs`}
+      />
+    </section>
+
+    <!-- Paso a Paso -->
+    <section class="mb-16">
+      <h2 class="flex items-center space-x-3">
+        <Rocket className="w-8 h-8 text-primary-600 dark:text-primary-400" />
+        <span>Guía Paso a Paso</span>
+      </h2>
+
+      <div class="space-y-6">
+        <!-- Paso 1 -->
+        <div class="card">
+          <div class="flex items-center space-x-3 mb-3">
+            <div class="w-8 h-8 rounded-full bg-primary-500 text-white flex items-center justify-center font-bold">1</div>
+            <h3 class="text-lg font-semibold m-0">Configurar el Proyecto</h3>
+          </div>
+          
+          <CodeBlock 
+            client:load
+            language="bash"
+            code={`# Crear proyecto Astro
+npm create astro@latest mi-portfolio
+
+# Instalar dependencias
+cd mi-portfolio
+npm install @astrojs/react @astrojs/tailwind tailwindcss
+npm install framer-motion @studio-freight/lenis
+npm install lucide-react
+
+# Configurar integraciones
+npx astro add react tailwind`}
+          />
+        </div>
+
+        <!-- Paso 2 -->
+        <div class="card">
+          <div class="flex items-center space-x-3 mb-3">
+            <div class="w-8 h-8 rounded-full bg-primary-500 text-white flex items-center justify-center font-bold">2</div>
+            <h3 class="text-lg font-semibold m-0">Crear el Layout Base</h3>
+          </div>
+          
+          <p class="text-sm text-[rgb(var(--color-text-secondary))]">
+            Crea un layout que incluya: navbar sticky, contenido principal, footer y sistema de temas.
+          </p>
+        </div>
+
+        <!-- Paso 3 -->
+        <div class="card">
+          <div class="flex items-center space-x-3 mb-3">
+            <div class="w-8 h-8 rounded-full bg-primary-500 text-white flex items-center justify-center font-bold">3</div>
+            <h3 class="text-lg font-semibold m-0">Hero Section Impactante</h3>
+          </div>
+          
+          <p class="text-sm text-[rgb(var(--color-text-secondary))] mb-3">
+            Tu hero debe capturar atención inmediatamente. Incluye:
+          </p>
+          <ul class="text-sm space-y-1">
+            <li>• Tu nombre con animación</li>
+            <li>• Título/rol con efecto typing o fade-in</li>
+            <li>• CTA claro (botón de contacto)</li>
+            <li>• Imagen o ilustración de calidad</li>
+            <li>• Links a GitHub, LinkedIn, etc.</li>
+          </ul>
+        </div>
+
+        <!-- Paso 4 -->
+        <div class="card">
+          <div class="flex items-center space-x-3 mb-3">
+            <div class="w-8 h-8 rounded-full bg-primary-500 text-white flex items-center justify-center font-bold">4</div>
+            <h3 class="text-lg font-semibold m-0">Sección Sobre Mí</h3>
+          </div>
+          
+          <p class="text-sm text-[rgb(var(--color-text-secondary))]">
+            Cuenta tu historia de forma breve y personal. Incluye una foto profesional y destaca
+            qué te hace único como desarrollador.
+          </p>
+        </div>
+
+        <!-- Paso 5 -->
+        <div class="card">
+          <div class="flex items-center space-x-3 mb-3">
+            <div class="w-8 h-8 rounded-full bg-primary-500 text-white flex items-center justify-center font-bold">5</div>
+            <h3 class="text-lg font-semibold m-0">Galería de Proyectos</h3>
+          </div>
+          
+          <p class="text-sm text-[rgb(var(--color-text-secondary))] mb-3">
+            Muestra 3-5 proyectos destacados. Para cada uno:
+          </p>
+          <ul class="text-sm space-y-1">
+            <li>• Imagen/mockup atractivo</li>
+            <li>• Título y descripción concisa</li>
+            <li>• Tecnologías utilizadas (badges)</li>
+            <li>• Link a demo en vivo</li>
+            <li>• Link a repositorio GitHub</li>
+            <li>• Hover effects sutiles</li>
+          </ul>
+        </div>
+
+        <!-- Paso 6 -->
+        <div class="card">
+          <div class="flex items-center space-x-3 mb-3">
+            <div class="w-8 h-8 rounded-full bg-primary-500 text-white flex items-center justify-center font-bold">6</div>
+            <h3 class="text-lg font-semibold m-0">Skills y Tecnologías</h3>
+          </div>
+          
+          <p class="text-sm text-[rgb(var(--color-text-secondary))]">
+            Muestra las tecnologías que dominas con iconos o badges. Agrupa por categorías
+            (Frontend, Backend, Tools, etc.) para mejor organización.
+          </p>
+        </div>
+
+        <!-- Paso 7 -->
+        <div class="card">
+          <div class="flex items-center space-x-3 mb-3">
+            <div class="w-8 h-8 rounded-full bg-primary-500 text-white flex items-center justify-center font-bold">7</div>
+            <h3 class="text-lg font-semibold m-0">Formulario de Contacto</h3>
+          </div>
+          
+          <p class="text-sm text-[rgb(var(--color-text-secondary))] mb-3">
+            Crea un formulario funcional con React. Opciones:
+          </p>
+          <ul class="text-sm space-y-1">
+            <li>• Formspree (gratis, sin backend)</li>
+            <li>• EmailJS (envío directo por email)</li>
+            <li>• API Route de Astro + servicio SMTP</li>
+            <li>• Netlify Forms (si deployeas en Netlify)</li>
+          </ul>
+        </div>
+
+        <!-- Paso 8 -->
+        <div class="card">
+          <div class="flex items-center space-x-3 mb-3">
+            <div class="w-8 h-8 rounded-full bg-primary-500 text-white flex items-center justify-center font-bold">8</div>
+            <h3 class="text-lg font-semibold m-0">Animaciones y Microinteracciones</h3>
+          </div>
+          
+          <p class="text-sm text-[rgb(var(--color-text-secondary))] mb-3">
+            Añade vida al portfolio con:
+          </p>
+          <ul class="text-sm space-y-1">
+            <li>• Fade-in al hacer scroll (Framer Motion)</li>
+            <li>• Smooth scroll (Lenis)</li>
+            <li>• Hover effects en cards y botones</li>
+            <li>• Loading states</li>
+            <li>• Transiciones suaves entre secciones</li>
+          </ul>
+        </div>
+
+        <!-- Paso 9 -->
+        <div class="card">
+          <div class="flex items-center space-x-3 mb-3">
+            <div class="w-8 h-8 rounded-full bg-primary-500 text-white flex items-center justify-center font-bold">9</div>
+            <h3 class="text-lg font-semibold m-0">Optimización y SEO</h3>
+          </div>
+          
+          <ul class="text-sm space-y-1">
+            <li>• Optimiza imágenes (WebP, lazy loading)</li>
+            <li>• Meta tags adecuados</li>
+            <li>• Open Graph para redes sociales</li>
+            <li>• Lighthouse score alto (>90)</li>
+            <li>• Sitemap.xml</li>
+            <li>• robots.txt</li>
+          </ul>
+        </div>
+
+        <!-- Paso 10 -->
+        <div class="card">
+          <div class="flex items-center space-x-3 mb-3">
+            <div class="w-8 h-8 rounded-full bg-primary-500 text-white flex items-center justify-center font-bold">10</div>
+            <h3 class="text-lg font-semibold m-0">Deploy en Vercel</h3>
+          </div>
+          
+          <CodeBlock 
+            client:load
+            language="bash"
+            code={`# Subir a GitHub
+git init
+git add .
+git commit -m "Portfolio inicial"
+git remote add origin tu-repo.git
+git push -u origin main
+
+# Deploy en Vercel (opción 1: CLI)
+npm i -g vercel
+vercel --prod
+
+# Opción 2: Conectar repo en vercel.com
+# 1. Ir a vercel.com
+# 2. Import Git Repository
+# 3. Seleccionar tu repo
+# 4. Deploy automático!`}
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Ejemplo de Código -->
+    <section class="mb-16">
+      <h2 class="flex items-center space-x-3">
+        <Code className="w-8 h-8 text-primary-600 dark:text-primary-400" />
+        <span>Ejemplo: Project Card Interactiva</span>
+      </h2>
+
+      <CodeBlock 
+        client:load
+        language="typescript"
+        filename="ProjectCard.tsx"
+        code={`import { motion } from 'framer-motion';
+import { ExternalLink, Github } from 'lucide-react';
+
+interface ProjectCardProps {
+  title: string;
+  description: string;
+  image: string;
+  tags: string[];
+  demoUrl: string;
+  githubUrl: string;
+}
+
+export default function ProjectCard({
+  title,
+  description,
+  image,
+  tags,
+  demoUrl,
+  githubUrl
+}: ProjectCardProps) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="group bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
+    >
+      {/* Imagen */}
+      <div className="relative overflow-hidden">
+        <img 
+          src={image} 
+          alt={title}
+          className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+        />
+        
+        {/* Overlay con links */}
+        <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center space-x-4">
+          <a 
+            href={demoUrl} 
+            target="_blank"
+            className="p-3 bg-white rounded-full hover:scale-110 transition-transform"
+          >
+            <ExternalLink className="w-6 h-6 text-black" />
+          </a>
+          <a 
+            href={githubUrl} 
+            target="_blank"
+            className="p-3 bg-white rounded-full hover:scale-110 transition-transform"
+          >
+            <Github className="w-6 h-6 text-black" />
+          </a>
+        </div>
+      </div>
+
+      {/* Contenido */}
+      <div className="p-6">
+        <h3 className="text-2xl font-bold mb-2">{title}</h3>
+        <p className="text-gray-600 dark:text-gray-300 mb-4">
+          {description}
+        </p>
+        
+        {/* Tags */}
+        <div className="flex flex-wrap gap-2">
+          {tags.map(tag => (
+            <span 
+              key={tag}
+              className="px-3 py-1 bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 rounded-full text-sm"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  );
+}`}
+      />
+    </section>
+
+    <!-- Checklist Final -->
+    <section class="mb-16">
+      <h2>✅ Checklist Final</h2>
+
+      <div class="card bg-gradient-to-br from-primary-500/5 to-primary-600/10">
+        <h3 class="font-semibold mb-4">Antes de considerar terminado:</h3>
+        <div class="grid md:grid-cols-2 gap-3 text-sm">
+          <div class="space-y-2">
+            <label class="flex items-center space-x-2">
+              <input type="checkbox" class="rounded" />
+              <span>Funciona en todos los navegadores</span>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input type="checkbox" class="rounded" />
+              <span>Responsive en móvil/tablet/desktop</span>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input type="checkbox" class="rounded" />
+              <span>Imágenes optimizadas</span>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input type="checkbox" class="rounded" />
+              <span>Sin errores en consola</span>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input type="checkbox" class="rounded" />
+              <span>Lighthouse score >90</span>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input type="checkbox" class="rounded" />
+              <span>Dark mode funcional</span>
+            </label>
+          </div>
+          
+          <div class="space-y-2">
+            <label class="flex items-center space-x-2">
+              <input type="checkbox" class="rounded" />
+              <span>Links funcionan correctamente</span>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input type="checkbox" class="rounded" />
+              <span>Formulario de contacto funciona</span>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input type="checkbox" class="rounded" />
+              <span>Meta tags y SEO completos</span>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input type="checkbox" class="rounded" />
+              <span>Favicon agregado</span>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input type="checkbox" class="rounded" />
+              <span>README.md en GitHub</span>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input type="checkbox" class="rounded" />
+              <span>Deployado en Vercel</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Siguiente Paso -->
+    <section class="mb-16">
+      <div class="card bg-gradient-to-br from-primary-500/10 to-accent-500/10 text-center">
+        <h2>🎉 ¡Felicitaciones!</h2>
+        <p class="text-lg mb-6">
+          Al completar este proyecto, tendrás un portfolio profesional que demuestra
+          tus habilidades con tecnologías modernas.
+        </p>
+        <p class="text-[rgb(var(--color-text-secondary))]">
+          Comparte tu portfolio con nosotros en UXnicorp y con la comunidad.
+          ¡Estamos orgullosos de tu progreso!
+        </p>
+        <div class="mt-6">
+          <a href="/recursos" class="btn btn-primary">
+            Ver Recursos Adicionales →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation -->
+    <div class="flex justify-between items-center pt-8 border-t border-[rgb(var(--color-border))]">
+      <a href="/ejercicios" class="btn btn-secondary">
+        ← Ejercicios
+      </a>
+      <a href="/recursos" class="btn btn-primary">
+        Siguiente: Recursos →
+      </a>
+    </div>
+  </div>
+</CourseLayout>
