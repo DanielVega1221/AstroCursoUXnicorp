@@ -184,16 +184,19 @@ npm install lucide-react`}
 
         <h3 class="text-lg font-semibold mb-3 mt-6">2.2 Crear las carpetas</h3>
         
-        <p class="mb-4">En tu terminal, ejecuta:</p>
+        <p class="mb-4">En tu terminal, ejecuta el comando según tu sistema operativo:</p>
         
         <CodeBlock 
           client:load
           language="bash"
-          code={`# Crear carpetas
+          code={`# Linux / macOS:
 mkdir -p src/components src/layouts src/styles
 
-# En Windows PowerShell:
-New-Item -ItemType Directory -Force -Path src/components, src/layouts, src/styles`}
+# Windows PowerShell:
+New-Item -ItemType Directory -Force -Path src/components, src/layouts, src/styles
+
+# Windows CMD:
+mkdir src\\components src\\layouts src\\styles`}
         />
       </div>
     </section>
@@ -432,9 +435,9 @@ export default function ProjectCard({
         <img 
           src={image} 
           alt={title}
-          className={\`w-full h-48 object-cover transition-transform duration-300 \${
+          className={`w-full h-48 object-cover transition-transform duration-300 ${
             isHovered ? 'scale-110' : 'scale-100'
-          }\`}
+          }`}
         />
       </div>
       
@@ -526,7 +529,7 @@ import ProjectCard from '../components/ProjectCard';
         client:visible
         title="E-commerce Moderno"
         description="Tienda online con carrito, pagos y gestión de inventario"
-        image="/projects/ecommerce.jpg"
+        image="https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=600&fit=crop"
         tags={["React", "Node.js", "MongoDB"]}
         demoUrl="https://demo.com"
         githubUrl="https://github.com/user/repo"
@@ -536,7 +539,7 @@ import ProjectCard from '../components/ProjectCard';
         client:visible
         title="Dashboard Analytics"
         description="Panel de control con gráficos y métricas en tiempo real"
-        image="/projects/dashboard.jpg"
+        image="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop"
         tags={["Vue", "TypeScript", "Chart.js"]}
         demoUrl="https://demo.com"
       />
@@ -545,7 +548,7 @@ import ProjectCard from '../components/ProjectCard';
         client:visible
         title="Blog Personal"
         description="Blog con sistema de comentarios y búsqueda"
-        image="/projects/blog.jpg"
+        image="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&h=600&fit=crop"
         tags={["Astro", "Tailwind", "MDX"]}
         githubUrl="https://github.com/user/repo"
       />
@@ -556,9 +559,13 @@ import ProjectCard from '../components/ProjectCard';
 
         <div class="bg-yellow-50 dark:bg-yellow-900/20 p-4 rounded mt-4">
           <p class="text-sm font-semibold mb-2">⚡ Nota sobre <code>client:visible</code>:</p>
-          <p class="text-sm">
+          <p class="text-sm mb-3">
             Este directive hace que el componente React se hidrate solo cuando aparece en el viewport. 
             Perfecto para optimizar la carga inicial. Otras opciones: <code>client:load</code>, <code>client:idle</code>, <code>client:media</code>
+          </p>
+          <p class="text-sm font-semibold mb-1">📸 Sobre las imágenes:</p>
+          <p class="text-sm">
+            Estamos usando Unsplash como placeholder. Para producción, coloca tus imágenes en <code>/public</code> o usa un servicio de imágenes.
           </p>
         </div>
       </div>
@@ -582,12 +589,12 @@ const projects = [
   {
     title: "Proyecto 1",
     description: "Descripción del proyecto",
-    image: "/projects/project1.jpg",
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=600&fit=crop",
     tags: ["React", "TypeScript"],
     demoUrl: "https://demo.com",
     githubUrl: "https://github.com"
   },
-  // ... más proyectos
+  // ... más proyectos (usa Unsplash o coloca tus propias imágenes en /public)
 ];
 ---
 
@@ -621,7 +628,7 @@ const projects = [
       <div class="card">
         <h3 class="text-lg font-semibold mb-3">6.1 Configurar Astro</h3>
         <p class="mb-4">
-          Tu archivo <code>astro.config.mjs</code> debería verse así:
+          Tu archivo <code>astro.config.mjs</code> (o <code>astro.config.ts</code>) debería verse así:
         </p>
         
         <CodeBlock 
@@ -635,7 +642,7 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   integrations: [
     react(),
-    tailwind({ applyBaseStyles: false })
+    tailwind()
   ],
   // Optimizaciones
   output: 'static',
@@ -690,10 +697,12 @@ npm run preview`}
 
         <h3 class="text-lg font-semibold mb-3 mt-6">7.2 Subir a GitHub</h3>
         
+        <p class="text-sm mb-3">Primero crea un repositorio en GitHub, luego ejecuta estos comandos (funcionan en todos los sistemas):</p>
+        
         <CodeBlock 
           client:load
           language="bash"
-          code={`# Crear repositorio en GitHub primero, luego:
+          code={`# Estos comandos funcionan en Git Bash, PowerShell, Terminal (Mac/Linux)
 git add .
 git commit -m "Initial commit: Portfolio completo"
 git branch -M main
@@ -718,17 +727,24 @@ git push -u origin main`}
           </div>
 
           <div class="bg-gray-50 dark:bg-gray-800/50 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
-            <p class="font-semibold mb-4">Opción 2: Desde la terminal</p>
+            <p class="font-semibold mb-4">Opción 2: Desde la terminal (funciona en todos los sistemas)</p>
             <CodeBlock 
               client:load
               language="bash"
-              code={`# Instalar Vercel CLI
+              code={`# Instalar Vercel CLI globalmente
 npm i -g vercel
 
-# Deploy
+# Deploy (ejecuta desde la raíz de tu proyecto)
 vercel
 
-# Sigue las instrucciones en pantalla
+# Sigue las instrucciones en pantalla:
+# - Set up and deploy? Yes
+# - Which scope? (tu cuenta)
+# - Link to existing project? No
+# - What's your project's name? mi-portfolio
+# - In which directory is your code located? ./
+# - Want to override settings? No
+
 # Al final te dará una URL como: https://mi-portfolio.vercel.app`}
             />
           </div>
@@ -825,8 +841,17 @@ vercel
           <CodeBlock 
             client:load
             language="bash"
-            code={`# Reinstalar dependencias
+            code={`# Linux / macOS / Git Bash:
 rm -rf node_modules package-lock.json
+npm install
+
+# Windows PowerShell:
+Remove-Item -Recurse -Force node_modules, package-lock.json
+npm install
+
+# Windows CMD:
+rmdir /s /q node_modules
+del package-lock.json
 npm install`}
           />
         </div>
