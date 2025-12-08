@@ -2,6 +2,87 @@
 import CourseLayout from '../../layouts/CourseLayout.astro';
 import CodeBlock from '../../components/CodeBlock';
 import { Rocket, FolderTree, Terminal, Code, CheckCircle } from 'lucide-react';
+
+// Definir código como constantes para evitar problemas de parsing con template literals
+const projectCardCode = String.raw`import { useState } from 'react';
+import { ExternalLink, Github } from 'lucide-react';
+
+interface ProjectCardProps {
+  title: string;
+  description: string;
+  image: string;
+  tags: string[];
+  demoUrl?: string;
+  githubUrl?: string;
+}
+
+export default function ProjectCard({ 
+  title, 
+  description, 
+  image, 
+  tags, 
+  demoUrl, 
+  githubUrl 
+}: ProjectCardProps) {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <div 
+      className="card hover:shadow-xl transition-all duration-300"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div className="relative overflow-hidden rounded-lg mb-4">
+        <img 
+          src={image} 
+          alt={title}
+          className={\`w-full h-48 object-cover transition-transform duration-300 \${
+            isHovered ? 'scale-110' : 'scale-100'
+          }\`}
+        />
+      </div>
+      
+      <h3 className="text-xl font-bold mb-2">{title}</h3>
+      <p className="text-gray-600 dark:text-gray-300 mb-4">{description}</p>
+      
+      <div className="flex flex-wrap gap-2 mb-4">
+        {tags.map(tag => (
+          <span 
+            key={tag}
+            className="px-3 py-1 text-xs font-medium rounded-full bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300"
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+      
+      <div className="flex gap-3">
+        {demoUrl && (
+          <a 
+            href={demoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline"
+          >
+            <ExternalLink size={16} />
+            Demo
+          </a>
+        )}
+        {githubUrl && (
+          <a 
+            href={githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:underline"
+          >
+            <Github size={16} />
+            Código
+          </a>
+        )}
+      </div>
+    </div>
+  );
+}`;
 ---
 
 <CourseLayout title="Proyecto Completo: De Cero a Deploy | UXnicorp Academy">
@@ -218,7 +299,7 @@ mkdir src\\components src\\layouts src\\styles`}
           client:load
           language="css"
           filename="src/styles/global.css"
-          code={`@tailwind base;
+          code={String.raw`@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -403,85 +484,7 @@ import { Menu } from 'lucide-react';
           client:load
           language="typescript"
           filename="src/components/ProjectCard.tsx"
-          code={`import { useState } from 'react';
-import { ExternalLink, Github } from 'lucide-react';
-
-interface ProjectCardProps {
-  title: string;
-  description: string;
-  image: string;
-  tags: string[];
-  demoUrl?: string;
-  githubUrl?: string;
-}
-
-export default function ProjectCard({ 
-  title, 
-  description, 
-  image, 
-  tags, 
-  demoUrl, 
-  githubUrl 
-}: ProjectCardProps) {
-  const [isHovered, setIsHovered] = useState(false);
-
-  return (
-    <div 
-      className="card hover:shadow-xl transition-all duration-300"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <div className="relative overflow-hidden rounded-lg mb-4">
-        <img 
-          src={image} 
-          alt={title}
-          className={`w-full h-48 object-cover transition-transform duration-300 ${
-            isHovered ? 'scale-110' : 'scale-100'
-          }`}
-        />
-      </div>
-      
-      <h3 className="text-xl font-bold mb-2">{title}</h3>
-      <p className="text-gray-600 dark:text-gray-300 mb-4">{description}</p>
-      
-      <div className="flex flex-wrap gap-2 mb-4">
-        {tags.map(tag => (
-          <span 
-            key={tag}
-            className="px-3 py-1 text-xs font-medium rounded-full bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300"
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
-      
-      <div className="flex gap-3">
-        {demoUrl && (
-          <a 
-            href={demoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline"
-          >
-            <ExternalLink size={16} />
-            Demo
-          </a>
-        )}
-        {githubUrl && (
-          <a 
-            href={githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:underline"
-          >
-            <Github size={16} />
-            Código
-          </a>
-        )}
-      </div>
-    </div>
-  );
-}`}
+          code={projectCardCode}
         />
 
         <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded mt-4">
