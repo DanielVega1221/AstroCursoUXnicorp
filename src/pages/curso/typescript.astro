@@ -1,4 +1,4 @@
----
+﻿---
 import CourseLayout from '../../layouts/CourseLayout.astro';
 import CodeBlock from '../../components/CodeBlock';
 import { FileType } from 'lucide-react';
@@ -216,9 +216,9 @@ const usuario: Usuario = {
             Imagina que un componente es una <strong>máquina de hacer sándwiches</strong>. Las props son los ingredientes que le das:
           </p>
           <ul class="text-sm space-y-1">
-            <li>• Le das: pan, jamón, queso (props)</li>
-            <li>• La máquina: hace el sándwich (componente)</li>
-            <li>• Obtienes: un sándwich de jamón y queso (resultado)</li>
+            <li>Le das: pan, jamón, queso (props)</li>
+            <li>La máquina: hace el sándwich (componente)</li>
+            <li>Obtienes: un sándwich de jamón y queso (resultado)</li>
           </ul>
         </div>
         
@@ -339,6 +339,449 @@ export default function Button({ text, onClick, variant = 'primary' }: ButtonPro
           <li>✅ <strong>Documentación automática:</strong> Otros desarrolladores ven exactamente qué necesita el componente</li>
           <li>✅ <strong>Refactorización segura:</strong> Si cambias una prop, TypeScript te avisa dónde más debes actualizar</li>
         </ul>
+      </div>
+    </section>
+
+    <!-- Conceptos Avanzados -->
+    <section class="mb-16">
+      <h2 class="flex items-center space-x-3">
+        <span class="text-2xl">🚀</span>
+        <span>Conceptos Avanzados</span>
+      </h2>
+      
+      <div class="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 p-6 rounded-lg mb-8">
+        <h3 class="text-lg font-semibold mb-3">📚 Ahora sí, a lo profesional</h3>
+        <p class="text-sm">
+          Ya sabes lo básico. Ahora vamos con las herramientas que usan los desarrolladores senior 
+          para escribir código TypeScript robusto y mantenible.
+        </p>
+      </div>
+
+      <h3>1. Type Guards (Guardias de Tipo)</h3>
+      
+      <p class="mb-4">
+        Los <strong>Type Guards</strong> son formas de decirle a TypeScript: "confía en mí, sé qué tipo es esto". 
+        TypeScript es inteligente y puede <strong>estrechar</strong> (narrow) los tipos automáticamente.
+      </p>
+      
+      <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-4">
+        <p class="font-semibold mb-2">🎯 El problema:</p>
+        <p class="text-sm">
+          Tienes una variable que puede ser <code>string | number</code>. ¿Cómo trabajas con ella sin errores?
+        </p>
+      </div>
+      
+      <CodeBlock 
+        client:load
+        language="typescript"
+        code={`// ✅ typeof - para tipos primitivos
+function procesar(valor: string | number) {
+  if (typeof valor === "string") {
+    // TypeScript SABE que aquí valor es string
+    return valor.toUpperCase();
+  }
+  // TypeScript SABE que aquí valor es number
+  return valor * 2;
+}
+
+// ✅ instanceof - para clases
+function manejarError(error: Error | string) {
+  if (error instanceof Error) {
+    console.log(error.message);
+  } else {
+    console.log(error);
+  }
+}
+
+// ✅ in - para propiedades de objetos
+type Perro = { nombre: string; ladrar: () => void };
+type Gato = { nombre: string; maullar: () => void };
+
+function hacerSonido(animal: Perro | Gato) {
+  if ("ladrar" in animal) {
+    animal.ladrar(); // TypeScript sabe que es Perro
+  } else {
+    animal.maullar(); // TypeScript sabe que es Gato
+  }
+}
+
+// 🚀 Custom Type Guard - para casos complejos
+function esNumero(valor: unknown): valor is number {
+  return typeof valor === "number";
+}
+
+function multiplicar(a: unknown, b: unknown) {
+  if (esNumero(a) && esNumero(b)) {
+    return a * b; // TypeScript confía en tu guardia
+  }
+  throw new Error("Los valores deben ser números");
+}`}
+      />
+      
+      <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mt-4">
+        <h4 class="font-semibold mb-2">🔍 ¿Qué es <code>valor is number</code>?</h4>
+        <p class="text-sm mb-2">
+          Es un <strong>Type Predicate</strong> (predicado de tipo). Le dices a TypeScript: 
+          "si esta función retorna true, entonces el valor ES definitivamente un number".
+        </p>
+        <p class="text-sm text-gray-600 dark:text-gray-400">
+          Es como darle un certificado: "yo verifiqué esto, puedes confiar".
+        </p>
+      </div>
+
+      <h3 class="mt-8">2. Type Assertions y "as const"</h3>
+      
+      <p class="mb-4">
+        A veces <strong>tú sabes más que TypeScript</strong> sobre qué tipo es algo. Puedes "forzarlo" con <code>as</code>.
+      </p>
+      
+      <CodeBlock 
+        client:load
+        language="typescript"
+        code={`// Type Assertion - "yo sé mejor que tú, TypeScript"
+const miElemento = document.getElementById("app") as HTMLDivElement;
+miElemento.style.color = "red"; // Sin "as", TypeScript pensaría que puede ser null
+
+// as const - hacer valores INMUTABLES y LITERALES
+const RUTAS = {
+  home: "/",
+  about: "/about",
+  contact: "/contact"
+} as const;
+
+// Sin "as const": tipo = { home: string; about: string; ... }
+// CON "as const": tipo = { readonly home: "/"; readonly about: "/about"; ... }
+
+type Ruta = typeof RUTAS[keyof typeof RUTAS]; // "/" | "/about" | "/contact"
+
+// ✅ Útil para configuraciones que nunca cambian
+const COLORES = ["rojo", "azul", "verde"] as const;
+type Color = typeof COLORES[number]; // "rojo" | "azul" | "verde"
+
+// ❌ Sin as const, sería: type Color = string (muy genérico)`}
+      />
+      
+      <div class="bg-yellow-50 dark:bg-yellow-900/20 p-4 rounded-lg mt-4">
+        <p class="font-semibold mb-2">⚠️ Cuidado con Type Assertions</p>
+        <p class="text-sm">
+          Usar <code>as</code> es como decirle a TypeScript "confía en mí". Si te equivocas, 
+          TypeScript no te protegerá y tendrás errores en runtime. <strong>Úsalo solo cuando estés seguro.</strong>
+        </p>
+      </div>
+
+      <h3 class="mt-8">3. Utility Types Avanzados</h3>
+      
+      <p class="mb-4">
+        TypeScript incluye tipos "helper" que transforman otros tipos. Son súper útiles para evitar repetición.
+      </p>
+      
+      <CodeBlock 
+        client:load
+        language="typescript"
+        code={`interface Usuario {
+  id: number;
+  nombre: string;
+  email: string;
+  password: string;
+  createdAt: Date;
+}
+
+// 🔹 Partial - todas las propiedades opcionales
+type ActualizarUsuario = Partial<Usuario>;
+// = { id?: number; nombre?: string; email?: string; ... }
+
+// 🔹 Pick - seleccionar solo algunas propiedades
+type UsuarioPublico = Pick<Usuario, "id" | "nombre">;
+// = { id: number; nombre: string; }
+
+// 🔹 Omit - excluir propiedades
+type UsuarioSinPassword = Omit<Usuario, "password">;
+// = { id: number; nombre: string; email: string; createdAt: Date; }
+
+// 🔹 Record - crear objeto con claves y valores específicos
+type RolePermisos = Record<"admin" | "user" | "guest", string[]>;
+// = { admin: string[]; user: string[]; guest: string[]; }
+
+const permisos: RolePermisos = {
+  admin: ["leer", "escribir", "eliminar"],
+  user: ["leer", "escribir"],
+  guest: ["leer"]
+};
+
+// 🔹 ReturnType - obtener el tipo de retorno de una función
+function obtenerUsuario() {
+  return { id: 1, nombre: "Ana" };
+}
+
+type Usuario2 = ReturnType<typeof obtenerUsuario>;
+// = { id: number; nombre: string; }
+
+// 🔹 Awaited - obtener el tipo de una Promise
+type RespuestaAPI = Awaited<Promise<{ data: string }>>;
+// = { data: string; }`}
+      />
+      
+      <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mt-4">
+        <p class="font-semibold mb-2">💡 Caso de uso real</p>
+        <p class="text-sm mb-3">
+          Imagina una API que devuelve un Usuario completo, pero tu formulario solo necesita actualizar nombre y email:
+        </p>
+        <code class="text-xs bg-white dark:bg-gray-800 p-2 rounded block">
+          type FormularioUsuario = Pick&lt;Usuario, "nombre" | "email"&gt;;
+        </code>
+        <p class="text-sm mt-2">
+          Si después agregas más campos a Usuario, no tienes que tocar FormularioUsuario. ¡Reutilización!
+        </p>
+      </div>
+
+      <h3 class="mt-8">4. Mapped Types (Tipos Mapeados)</h3>
+      
+      <p class="mb-4">
+        Los <strong>Mapped Types</strong> te permiten crear nuevos tipos transformando las propiedades de un tipo existente. 
+        Es como hacer un <code>map()</code> pero sobre tipos.
+      </p>
+      
+      <CodeBlock 
+        client:load
+        language="typescript"
+        code={`interface Producto {
+  id: number;
+  nombre: string;
+  precio: number;
+}
+
+// Hacer todas las propiedades string (para formularios)
+type ProductoFormulario = {
+  [K in keyof Producto]: string;
+};
+// = { id: string; nombre: string; precio: string; }
+
+// Hacer todas las propiedades opcionales y null
+type ProductoParcial = {
+  [K in keyof Producto]?: Producto[K] | null;
+};
+
+// 🚀 Ejemplo avanzado: agregar "loading" a cada campo
+type ConLoading<T> = {
+  [K in keyof T]: {
+    value: T[K];
+    loading: boolean;
+  };
+};
+
+type ProductoConLoading = ConLoading<Producto>;
+// = {
+//   id: { value: number; loading: boolean; };
+//   nombre: { value: string; loading: boolean; };
+//   precio: { value: number; loading: boolean; };
+// }
+
+// ✅ Útil para estados de carga en formularios complejos
+const producto: ProductoConLoading = {
+  id: { value: 1, loading: false },
+  nombre: { value: "Laptop", loading: false },
+  precio: { value: 1200, loading: true }
+};`}
+      />
+
+      <h3 class="mt-8">5. Conditional Types (Tipos Condicionales)</h3>
+      
+      <p class="mb-4">
+        Los tipos pueden tener lógica condicional: "si es A, entonces B, sino C". 
+        Es como un <code>if</code> pero para tipos.
+      </p>
+      
+      <CodeBlock 
+        client:load
+        language="typescript"
+        code={`// Sintaxis: T extends U ? X : Y
+// Si T es asignable a U, entonces X, sino Y
+
+type EsString<T> = T extends string ? "sí" : "no";
+
+type Resultado1 = EsString<string>;  // "sí"
+type Resultado2 = EsString<number>;  // "no"
+
+// 🚀 Ejemplo práctico: tipo de retorno dinámico
+type RespuestaAPI<T> = T extends { error: any }
+  ? { success: false; error: string }
+  : { success: true; data: T };
+
+type Exito = RespuestaAPI<{ nombre: string }>;
+// = { success: true; data: { nombre: string } }
+
+type Error = RespuestaAPI<{ error: "Not Found" }>;
+// = { success: false; error: string }
+
+// 🎯 Extraer tipos de arrays
+type UnwrapArray<T> = T extends (infer U)[] ? U : T;
+
+type Numeros = UnwrapArray<number[]>;  // number
+type Texto = UnwrapArray<string>;      // string
+
+// ✅ Útil para trabajar con APIs genéricas
+function procesarDatos<T>(datos: T): UnwrapArray<T> {
+  if (Array.isArray(datos)) {
+    return datos[0] as UnwrapArray<T>;
+  }
+  return datos as UnwrapArray<T>;
+}`}
+      />
+      
+      <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg mt-4">
+        <p class="font-semibold mb-2">🧠 ¿Cuándo usar esto?</p>
+        <p class="text-sm">
+          Los Conditional Types brillan cuando creas <strong>bibliotecas</strong> o <strong>utilidades genéricas</strong> 
+          que deben adaptarse a diferentes tipos. En aplicaciones normales, los usarás menos, pero cuando los necesites, 
+          son invaluables.
+        </p>
+      </div>
+
+      <h3 class="mt-8">6. TypeScript con Astro</h3>
+      
+      <p class="mb-4">
+        Astro tiene soporte TypeScript de primera clase. Aquí está cómo usarlo en tus componentes.
+      </p>
+      
+      <CodeBlock 
+        client:load
+        language="typescript"
+        filename="Card.astro"
+        code={`---
+// Props tipadas en componentes Astro
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  tags?: string[];
+}
+
+const { title, description, image, tags = [] } = Astro.props;
+---
+
+<div class="card">
+  {image && <img src={image} alt={title} />}
+  <h2>{title}</h2>
+  {description && <p>{description}</p>}
+  {tags.length > 0 && (
+    <div class="tags">
+      {tags.map(tag => <span class="tag">{tag}</span>)}
+    </div>
+  )}
+</div>`}
+      />
+      
+      <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mt-4">
+        <p class="font-semibold mb-2">📝 Notas importantes para Astro:</p>
+        <ul class="text-sm space-y-2">
+          <li>✅ La interfaz <strong>debe llamarse exactamente "Props"</strong> (con P mayúscula)</li>
+          <li>✅ Usa <code>Astro.props</code> para acceder a las props</li>
+          <li>✅ TypeScript te dará autocompletado cuando uses el componente</li>
+          <li>✅ Los archivos <code>.astro</code> soportan TypeScript automáticamente</li>
+        </ul>
+      </div>
+
+      <h3 class="mt-8">🎯 Ejercicio Práctico: Componente de Tarjeta Avanzada</h3>
+      
+      <p class="mb-4">
+        Vamos a crear un componente que combine todo lo que aprendiste:
+      </p>
+      
+      <CodeBlock 
+        client:load
+        language="typescript"
+        filename="AdvancedCard.tsx"
+        code={`// 1. Tipos base
+type CardVariant = "default" | "featured" | "minimal";
+type CardSize = "sm" | "md" | "lg";
+
+// 2. Interface principal con opciones
+interface BaseCardProps {
+  title: string;
+  description?: string;
+  variant?: CardVariant;
+  size?: CardSize;
+}
+
+// 3. Props condicionales: si es "featured", image es obligatoria
+type CardProps = BaseCardProps & (
+  | { variant: "featured"; image: string }
+  | { variant?: "default" | "minimal"; image?: string }
+);
+
+// 4. Type Guard personalizado
+function isFeatured(props: CardProps): props is CardProps & { variant: "featured" } {
+  return props.variant === "featured";
+}
+
+// 5. Mapped type para estilos
+type StyleMap = {
+  [K in CardSize]: {
+    padding: string;
+    fontSize: string;
+  };
+};
+
+const styles: StyleMap = {
+  sm: { padding: "0.5rem", fontSize: "0.875rem" },
+  md: { padding: "1rem", fontSize: "1rem" },
+  lg: { padding: "1.5rem", fontSize: "1.25rem" }
+};
+
+// 6. Componente final
+export default function AdvancedCard(props: CardProps) {
+  const { title, description, size = "md", variant = "default" } = props;
+  
+  // Type Guard en acción
+  if (isFeatured(props)) {
+    // TypeScript SABE que props.image existe aquí
+    return (
+      <div className={\`card featured \${size}\`}>
+        <img src={props.image} alt={title} />
+        <h2>{title}</h2>
+        {description && <p>{description}</p>}
+      </div>
+    );
+  }
+  
+  return (
+    <div 
+      className={\`card \${variant} \${size}\`}
+      style={styles[size]}
+    >
+      <h2>{title}</h2>
+      {description && <p>{description}</p>}
+    </div>
+  );
+}
+
+// ✅ Uso correcto
+<AdvancedCard title="Hola" variant="featured" image="/img.jpg" />
+
+// ❌ ERROR: variant "featured" requiere image
+<AdvancedCard title="Hola" variant="featured" />`}
+      />
+      
+      <div class="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 p-6 rounded-lg mt-6">
+        <h4 class="font-semibold mb-3">🎓 ¿Qué aprendiste en este ejercicio?</h4>
+        <ul class="text-sm space-y-2">
+          <li>✅ <strong>Union Types</strong> para opciones limitadas</li>
+          <li>✅ <strong>Conditional Props</strong> (si variant es "featured", image es obligatoria)</li>
+          <li>✅ <strong>Type Guards</strong> para verificar tipos en runtime</li>
+          <li>✅ <strong>Mapped Types</strong> para crear objetos de configuración</li>
+          <li>✅ <strong>Type Inference</strong> (TypeScript deduce automáticamente)</li>
+        </ul>
+      </div>
+
+      <div class="bg-orange-50 dark:bg-orange-900/20 p-6 rounded-lg mt-8">
+        <h4 class="font-semibold mb-3">🚀 Tips para convertirte en experto</h4>
+        <ol class="text-sm space-y-2 list-decimal list-inside">
+          <li><strong>Lee mensajes de error completos</strong> - TypeScript te dice EXACTAMENTE qué está mal</li>
+          <li><strong>Usa "Go to Definition"</strong> (F12) - Ve cómo están tipadas las librerías que usas</li>
+          <li><strong>Evita "any"</strong> - Es como apagar TypeScript. Usa "unknown" si no sabes el tipo</li>
+          <li><strong>Practica con DefinitelyTyped</strong> - Mira cómo están tipadas las librerías populares</li>
+          <li><strong>Configura strict mode</strong> - En tsconfig.json, activa <code>"strict": true</code></li>
+        </ol>
       </div>
     </section>
 
@@ -474,7 +917,7 @@ function Button({ text, onClick, variant = "primary" }: ButtonProps) {
 
     <div class="flex justify-between pt-8 border-t border-[rgb(var(--color-border))]">
       <a href="/curso/react-islands" class="btn btn-secondary">← React Islands</a>
-      <a href="/curso/performance" class="btn btn-primary">Siguiente: Performance →</a>
+      <a href="/curso/proyecto-completo" class="btn btn-primary">Siguiente: Proyecto Completo →</a>
     </div>
   </div>
 </CourseLayout>

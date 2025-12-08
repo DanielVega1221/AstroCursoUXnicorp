@@ -1,4 +1,4 @@
----
+﻿---
 import CourseLayout from '../../layouts/CourseLayout.astro';
 import CodeBlock from '../../components/CodeBlock';
 import InteractiveDemo from '../../components/InteractiveDemo';
@@ -116,12 +116,12 @@ import { BookOpen, Brain, Code, Globe, Monitor } from 'lucide-react';
       <div class="card bg-yellow-50 dark:bg-yellow-900/20 mb-4">
         <p class="font-semibold mb-2">🔍 Lee el código así:</p>
         <ul class="text-sm space-y-2">
-          <li>• <code>//</code> = Comentario (notas para humanos, la computadora lo ignora)</li>
-          <li>• <code>let</code> = "Crea una variable" (una caja para guardar algo)</li>
-          <li>• <code>=</code> = "Guarda esto" (no es "igual", es "asignar")</li>
-          <li>• <code>"texto"</code> = Texto entre comillas</li>
-          <li>• <code>if</code> = "Si" (tomar decisión)</li>
-          <li>• <code>for</code> = "Para cada" (repetir)</li>
+          <li><code>//</code> = Comentario (notas para humanos, la computadora lo ignora)</li>
+          <li><code>let</code> = "Crea una variable" (una caja para guardar algo)</li>
+          <li><code>=</code> = "Guarda esto" (no es "igual", es "asignar")</li>
+          <li><code>"texto"</code> = Texto entre comillas</li>
+          <li><code>if</code> = "Si" (tomar decisión)</li>
+          <li><code>for</code> = "Para cada" (repetir)</li>
         </ul>
       </div>
       
@@ -418,39 +418,186 @@ Document
 
     <!-- Cheatsheet -->
     <section class="mb-16">
-      <h2>📥 Cheatsheet: Fundamentos</h2>
+      <h2 class="flex items-center space-x-3">
+        <span class="text-2xl">📘</span>
+        <span>Cheatsheet: Fundamentos de Programación</span>
+      </h2>
       
-      <div class="card bg-gradient-to-br from-primary-500/10 to-accent-500/10">
-        <div class="grid md:grid-cols-2 gap-6">
-          <div>
-            <h4 class="font-semibold mb-3">Conceptos Clave</h4>
-            <ul class="space-y-1 text-sm">
-              <li>• Variable: guarda datos</li>
-              <li>• Función: bloque de código reutilizable</li>
-              <li>• Condicional: if/else</li>
-              <li>• Bucle: for, while</li>
-              <li>• Array: lista de elementos</li>
-              <li>• Objeto: colección de propiedades</li>
-            </ul>
-          </div>
-          
-          <div>
-            <h4 class="font-semibold mb-3">Los 3 Pilares Web</h4>
-            <ul class="space-y-1 text-sm">
-              <li>• HTML = Estructura</li>
-              <li>• CSS = Estilo</li>
-              <li>• JavaScript = Comportamiento</li>
-              <li>• DOM = Árbol de elementos</li>
-              <li>• API = Puente entre sistemas</li>
-              <li>• Request/Response = Cliente ↔ Servidor</li>
-            </ul>
-          </div>
-        </div>
+      <div class="card">
+        <div class="space-y-6">
+          <div class="grid md:grid-cols-3 gap-4">
+            <div>
+              <h4 class="font-semibold text-blue-600 mb-3">Conceptos Core</h4>
+              <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded text-xs space-y-1">
+                <p><strong>Variable:</strong> Guarda datos</p>
+                <p><strong>Función:</strong> Código reutilizable</p>
+                <p><strong>Condicional:</strong> if/else (decisiones)</p>
+                <p><strong>Bucle:</strong> for/while (repetición)</p>
+                <p><strong>Array:</strong> Lista ordenada [1, 2, 3]</p>
+                <p><strong>Objeto:</strong> {'{'} clave: valor {'}'}</p>
+              </div>
+            </div>
 
-        <div class="mt-6 text-center">
-          <button class="btn btn-primary">
-            Descargar PDF
-          </button>
+            <div>
+              <h4 class="font-semibold text-blue-600 mb-3">Los 3 Pilares Web</h4>
+              <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded text-xs space-y-1">
+                <p><strong>HTML:</strong> Estructura/contenido</p>
+                <p><strong>CSS:</strong> Estilos/apariencia</p>
+                <p><strong>JavaScript:</strong> Comportamiento/lógica</p>
+                <p class="pt-2 border-t border-gray-300 dark:border-gray-600">
+                  Juntos forman cualquier sitio web
+                </p>
+              </div>
+            </div>
+
+            <div>
+              <h4 class="font-semibold text-blue-600 mb-3">Cómo Funciona la Web</h4>
+              <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded text-xs space-y-1">
+                <p><strong>Cliente:</strong> Tu navegador</p>
+                <p><strong>Servidor:</strong> Computadora remota</p>
+                <p><strong>Request:</strong> Pedir datos</p>
+                <p><strong>Response:</strong> Recibir datos</p>
+                <p><strong>URL:</strong> Dirección web</p>
+                <p><strong>HTTP:</strong> Protocolo de comunicación</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-4">
+            <div>
+              <h4 class="font-semibold text-blue-600 mb-3">Tipos de Datos</h4>
+              <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded font-mono text-xs">
+                <pre>{`// Primitivos
+string: "texto"
+number: 42
+boolean: true/false
+null: vacío intencional
+undefined: sin definir
+
+// Compuestos
+array: [1, 2, 3]
+object: { nombre: "Ana" }`}</pre>
+              </div>
+            </div>
+
+            <div>
+              <h4 class="font-semibold text-blue-600 mb-3">Operadores Básicos</h4>
+              <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded font-mono text-xs">
+                <pre>{`// Aritméticos
++ - * / %
+
+// Comparación
+== === != !== > < >= <=
+
+// Lógicos
+&& (y)  || (o)  ! (no)
+
+// Asignación
+= += -= *= /=`}</pre>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="font-semibold text-blue-600 mb-3">Estructuras de Control</h4>
+            <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded font-mono text-xs">
+              <pre>{`// Condicional
+if (condicion) {
+  // código si es verdadero
+} else {
+  // código si es falso
+}
+
+// Bucle for
+for (let i = 0; i < 10; i++) {
+  console.log(i); // 0, 1, 2...9
+}
+
+// Bucle while
+while (condicion) {
+  // código mientras sea verdadero
+}
+
+// Función
+function saludar(nombre) {
+  return "Hola " + nombre;
+}
+saludar("Ana"); // "Hola Ana"`}</pre>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-4">
+            <div>
+              <h4 class="font-semibold text-blue-600 mb-3">DOM Básico</h4>
+              <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded font-mono text-xs">
+                <pre>{`// Seleccionar elementos
+document.getElementById("id")
+document.querySelector(".clase")
+
+// Modificar contenido
+elemento.textContent = "Nuevo"
+elemento.innerHTML = "<p>HTML</p>"
+
+// Agregar eventos
+elemento.addEventListener("click", () => {
+  console.log("¡Click!");
+});`}</pre>
+              </div>
+            </div>
+
+            <div>
+              <h4 class="font-semibold text-blue-600 mb-3">Arrays y Objetos</h4>
+              <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded font-mono text-xs">
+                <pre>{`// Array
+const numeros = [1, 2, 3];
+numeros.push(4);  // [1,2,3,4]
+numeros.length;   // 4
+
+// Objeto
+const persona = {
+  nombre: "Ana",
+  edad: 25,
+  saludar() {
+    return "Hola!";
+  }
+};
+persona.nombre; // "Ana"`}</pre>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="font-semibold text-blue-600 mb-3">Errores Comunes de Principiantes</h4>
+            <div class="bg-red-50 dark:bg-red-900/20 p-3 rounded text-xs space-y-2">
+              <div>
+                <p class="font-semibold text-red-600">❌ Confundir = con ==</p>
+                <p><code>x = 5</code> (asignación) vs <code>x == 5</code> (comparación)</p>
+              </div>
+              <div>
+                <p class="font-semibold text-red-600">❌ Variables sin declarar</p>
+                <p>Siempre usa <code>let</code>, <code>const</code>, o <code>var</code></p>
+              </div>
+              <div>
+                <p class="font-semibold text-red-600">❌ Olvidar comillas en strings</p>
+                <p><code>"texto"</code> ✅  vs  <code>texto</code> ❌ (busca variable)</p>
+              </div>
+              <div>
+                <p class="font-semibold text-red-600">❌ No usar la consola (F12)</p>
+                <p>La consola del navegador es tu mejor amiga - úsala siempre</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded">
+            <h4 class="font-semibold text-green-700 dark:text-green-300 mb-2">💡 Tips para Principiantes</h4>
+            <ul class="text-sm space-y-1">
+              <li>✅ Practica escribiendo código todos los días (aunque sean 15 minutos)</li>
+              <li>✅ Lee los mensajes de error - te dicen exactamente qué está mal</li>
+              <li>✅ Usa <code>console.log()</code> para ver qué está pasando en tu código</li>
+              <li>✅ No copies y pegues sin entender - escribe cada línea</li>
+              <li>✅ Comienza simple - un programa que funciona es mejor que uno complejo roto</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>

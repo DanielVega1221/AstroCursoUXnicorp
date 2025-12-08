@@ -12,7 +12,8 @@ import {
   Lightbulb,
   CheckSquare,
   Award,
-  Briefcase
+  Briefcase,
+  FolderGit2
 } from 'lucide-react';
 
 const currentPath = Astro.url.pathname;
@@ -39,6 +40,12 @@ const sections = [
       { href: '/curso/astro', label: 'Astro 0→Experto', icon: Rocket },
       { href: '/curso/react-islands', label: 'React Islands', icon: Layout },
       { href: '/curso/typescript', label: 'TypeScript', icon: FileType },
+    ]
+  },
+  {
+    title: 'Proyecto Integrador',
+    items: [
+      { href: '/curso/proyecto-completo', label: 'Proyecto de Cero a Deploy', icon: FolderGit2 },
     ]
   },
   {

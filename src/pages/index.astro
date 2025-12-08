@@ -1,6 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { ArrowRight, Book, Code, Sparkles, Award, Heart, Target, Layers, Compass, Star } from 'lucide-react';
+
+const roadmapSteps = [
+  { title: 'Fundamentos', desc: 'Conceptos básicos de programación y web', modules: '1 módulo', icon: Compass },
+  { title: 'Lenguajes Base', desc: 'HTML, CSS y JavaScript desde cero', modules: '4 módulos', icon: Code },
+  { title: 'Framework Moderno', desc: 'Astro, React Islands y TypeScript', modules: '3 módulos', icon: Layers },
+  { title: 'Proyecto Integrador', desc: 'Crea un proyecto completo de cero a deploy', modules: '1 módulo', icon: Sparkles },
+  { title: 'Profesionalización', desc: 'Performance, SEO y metodologías', modules: '2 módulos', icon: Target },
+  { title: 'Práctica', desc: 'Ejercicios y proyecto final', modules: '3 módulos', icon: Star },
+];
 ---
 
 <BaseLayout>
@@ -50,7 +59,7 @@ import { ArrowRight, Book, Code, Sparkles, Award, Heart, Target, Layers, Compass
             <!-- Stats -->
             <div class="grid grid-cols-3 gap-8 pt-16 max-w-2xl mx-auto">
               <div class="text-center space-y-2">
-                <div class="text-4xl font-bold bg-gradient-to-r from-primary-500 to-primary-600 bg-clip-text text-transparent">13</div>
+                <div class="text-4xl font-bold bg-gradient-to-r from-primary-500 to-primary-600 bg-clip-text text-transparent">14</div>
                 <div class="text-sm text-slate-600 dark:text-slate-400 font-medium">Módulos</div>
               </div>
               <div class="text-center space-y-2">
@@ -150,8 +159,12 @@ import { ArrowRight, Book, Code, Sparkles, Award, Heart, Target, Layers, Compass
     </section>
 
     <!-- Learning Path -->
-    <section class="py-24 bg-gradient-to-b from-primary-50/30 to-white dark:from-slate-900 dark:to-slate-900">
-      <div class="container-custom">
+    <section class="py-24 bg-gradient-to-b from-primary-50/30 to-white dark:from-slate-900 dark:to-slate-900 relative overflow-hidden">
+      {/* Decorative elements */}
+      <div class="absolute top-10 left-10 w-64 h-64 bg-primary-200/20 dark:bg-primary-500/5 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-10 right-10 w-80 h-80 bg-primary-300/20 dark:bg-primary-600/5 rounded-full blur-3xl"></div>
+      
+      <div class="container-custom relative z-10">
         <div class="text-center mb-16 space-y-4">
           <h2 class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white">
             Tu Ruta de Aprendizaje
@@ -162,29 +175,43 @@ import { ArrowRight, Book, Code, Sparkles, Award, Heart, Target, Layers, Compass
         </div>
 
         <div class="max-w-3xl mx-auto space-y-5">
-          {[
-            { title: 'Fundamentos', desc: 'Conceptos básicos de programación y web', modules: '1 módulo', icon: Compass },
-            { title: 'Lenguajes Base', desc: 'HTML, CSS y JavaScript desde cero', modules: '4 módulos', icon: Code },
-            { title: 'Framework Moderno', desc: 'Astro, React Islands y TypeScript', modules: '3 módulos', icon: Layers },
-            { title: 'Profesionalización', desc: 'Performance, SEO y metodologías', modules: '2 módulos', icon: Target },
-            { title: 'Práctica', desc: 'Ejercicios y proyecto final', modules: '3 módulos', icon: Star },
-          ].map((step, index) => {
+          {roadmapSteps.map((step, index) => {
             const Icon = step.icon;
             return (
-              <div class="group card-soft flex items-start space-x-5 hover:translate-x-2 transition-all duration-300 cursor-pointer">
-                <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 text-white flex items-center justify-center font-bold text-lg shadow-lg shadow-primary-500/25">
-                  {index + 1}
-                </div>
-                <div class="flex-1 min-w-0">
-                  <div class="flex items-center gap-3 mb-2">
-                    <h3 class="text-xl font-semibold text-slate-900 dark:text-white">{step.title}</h3>
-                    <Icon className="w-5 h-5 text-primary-500 dark:text-primary-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div class="group bg-white/80 dark:bg-slate-800/50 backdrop-blur-sm border border-slate-200/50 dark:border-slate-700/50 rounded-2xl p-7 shadow-sm hover:shadow-xl hover:border-primary-300 dark:hover:border-primary-600 transition-all duration-300 cursor-pointer hover:translate-x-2 relative overflow-hidden">
+                {/* Gradient overlay on hover */}
+                <div class="absolute inset-0 bg-gradient-to-r from-primary-500/0 via-primary-500/5 to-primary-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                <div class="relative z-10 flex items-start space-x-5">
+                  {/* Number badge */}
+                  <div class="flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 text-white flex items-center justify-center font-bold text-xl shadow-lg shadow-primary-500/25 group-hover:shadow-primary-500/50 transition-all group-hover:rotate-12">
+                    {index + 1}
                   </div>
-                  <p class="text-slate-600 dark:text-slate-400 mb-2 leading-relaxed">{step.desc}</p>
-                  <span class="inline-flex items-center text-sm font-medium text-primary-600 dark:text-primary-400">
-                    {step.modules}
-                  </span>
+                  
+                  {/* Content */}
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-center gap-3 mb-2">
+                      <h3 class="text-xl font-semibold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                        {step.title}
+                      </h3>
+                      <Icon className="w-5 h-5 text-primary-500 dark:text-primary-400" />
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-400 mb-3 leading-relaxed">
+                      {step.desc}
+                    </p>
+                    <span class="inline-flex items-center text-sm font-medium text-primary-600 dark:text-primary-400 group-hover:translate-x-1 transition-transform">
+                      {step.modules} →
+                    </span>
+                  </div>
                 </div>
+
+                {/* Decorative corner accent */}
+                <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-primary-500/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                {/* Connecting line (except for last item) */}
+                {index < roadmapSteps.length - 1 && (
+                  <div class="absolute left-7 -bottom-5 w-0.5 h-5 bg-gradient-to-b from-primary-400 to-primary-300 dark:from-primary-600 dark:to-primary-500" />
+                )}
               </div>
             );
           })}
