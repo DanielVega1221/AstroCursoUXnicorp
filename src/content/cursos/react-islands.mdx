@@ -1,25 +1,17 @@
-﻿---
-import CourseLayout from '../../layouts/CourseLayout.astro';
-import CodeBlock from '../../components/CodeBlock';
-import { Layout } from 'lucide-react';
 ---
-
-<CourseLayout title="React Islands | UXnicorp Academy">
-  <div class="prose-custom max-w-4xl">
-    <div class="mb-12">
-      <div class="flex items-center space-x-3 mb-4">
-        <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center">
-          <Layout className="w-6 h-6 text-blue-600 dark:text-blue-400" />
-        </div>
-        <div>
-          <p class="text-sm text-blue-600 dark:text-blue-400 font-medium">Módulo 7</p>
-          <h1 class="text-4xl font-bold m-0">React Islands en Astro</h1>
-        </div>
-      </div>
-      <p class="text-xl text-[rgb(var(--color-text-secondary))]">
-        Aprende a integrar componentes React interactivos dentro de Astro usando Islands Architecture.
-      </p>
-    </div>
+title: "React Islands en Astro"
+description: "Aprende a integrar componentes React interactivos dentro de Astro usando Islands Architecture."
+order: 7
+section: "framework-moderno"
+moduleBadge: "Módulo 7"
+icon: "Layout"
+iconColor: "blue"
+prevSlug: "astro"
+prevLabel: "Astro"
+nextSlug: "typescript"
+nextLabel: "TypeScript"
+sidebarLabel: "React Islands"
+---
 
     <section class="mb-16">
       <h2>¿Qué es una Isla?</h2>
@@ -134,23 +126,23 @@ import { Layout } from 'lucide-react';
       
       <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded mb-4">
         <p class="text-sm font-semibold mb-2">📝 Explicación ANTES del código:</p>
-        <ul class="text-sm space-y-2">
-          <li><strong>Línea 1:</strong> Importamos <code>useState</code> - es el "gancho" (hook) que nos permite guardar información (el estado)</li>
-          <li><strong>Línea 3:</strong> <code>export default</code> - hacemos que este componente se pueda usar en otros archivos</li>
-          <li><strong>Línea 4:</strong> <code>const [count, setCount] = useState(0)</code> - Creamos una variable especial:
-            <ul class="ml-4 mt-1 space-y-1">
-              <li><code>count</code> es el número actual (empieza en 0)</li>
-              <li><code>setCount</code> es la función para cambiar ese número</li>
-              <li><code>useState(0)</code> dice "empieza en 0"</li>
-            </ul>
-          </li>
-          <li><strong>Línea 8:</strong> Mostramos el número actual: <code>{`{count}`}</code></li>
-          <li><strong>Línea 9:</strong> Botón que cuando haces clic llama a <code>setCount(count + 1)</code> - suma 1 al número</li>
-        </ul>
+        <div class="text-sm space-y-2">
+          <p><strong>Línea 1:</strong> Importamos <code>useState</code> - es el "gancho" (hook) que nos permite guardar información (el estado)</p>
+          <p><strong>Línea 3:</strong> <code>export default</code> - hacemos que este componente se pueda usar en otros archivos</p>
+          <div>
+            <p class="mb-1"><strong>Línea 4:</strong> <code>const [count, setCount] = useState(0)</code> - Creamos una variable especial:</p>
+            <div class="ml-4 space-y-1">
+              <p><code>count</code> es el número actual (empieza en 0)</p>
+              <p><code>setCount</code> es la función para cambiar ese número</p>
+              <p><code>useState(0)</code> dice "empieza en 0"</p>
+            </div>
+          </div>
+          <p><strong>Línea 8:</strong> Mostramos el número actual: <code>{`{count}`}</code></p>
+          <p><strong>Línea 9:</strong> Botón que cuando haces clic llama a <code>setCount(count + 1)</code> - suma 1 al número</p>
+        </div>
       </div>
       
-      <CodeBlock 
-        client:load
+      <CodeBlock
         language="typescript"
         filename="Counter.tsx"
         code={`import { useState } from 'react';
@@ -205,8 +197,7 @@ export default function Counter() {
         </p>
       </div>
       
-      <CodeBlock 
-        client:load
+      <CodeBlock
         language="astro"
         filename="page.astro"
         code={`---
@@ -216,8 +207,8 @@ import Counter from '../components/Counter.tsx';
 <h1>Mi Página con una Isla</h1>
 <p>Este es HTML normal y estático.</p>
 
-<!-- Aquí empieza la ISLA interactiva -->
-<Counter client:load />
+{/* Aquí empieza la ISLA interactiva */}
+<Counter />
 
 <p>Y esto también es HTML estático.</p>`}
       />
@@ -230,7 +221,7 @@ import Counter from '../components/Counter.tsx';
         
         <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded">
           <p class="font-semibold mb-2">🏝️ La Isla</p>
-          <p class="text-sm">Solo el <code>&lt;Counter client:load /&gt;</code> carga JavaScript y es interactivo. El resto de la página sigue siendo rápida.</p>
+          <p class="text-sm">Solo el <code>&lt;Counter /&gt;</code> carga JavaScript y es interactivo. El resto de la página sigue siendo rápida.</p>
         </div>
       </div>
     </section>
@@ -311,10 +302,3 @@ import Counter from '../components/Counter.tsx';
         </ul>
       </div>
     </section>
-
-    <div class="flex justify-between pt-8 border-t border-[rgb(var(--color-border))]">
-      <a href="/curso/astro" class="btn btn-secondary">← Astro</a>
-      <a href="/curso/typescript" class="btn btn-primary">Siguiente: TypeScript →</a>
-    </div>
-  </div>
-</CourseLayout>

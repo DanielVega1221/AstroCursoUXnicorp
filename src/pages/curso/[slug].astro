@@ -1,0 +1,113 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import CourseLayout from '../../layouts/CourseLayout.astro';
+import CodeBlockWrapper from '../../components/CodeBlockWrapper.astro';
+import FlexboxDemoWrapper from '../../components/FlexboxDemoWrapper.astro';
+import GridDemoWrapper from '../../components/GridDemoWrapper.astro';
+import InteractiveDemo from '../../components/InteractiveDemo';
+import {
+  BookOpen, Book, Brain, Code, Code2, Globe, Monitor, FileText, List,
+  Palette, Smartphone, Sparkles, Zap, Database, Rocket, Package, Server,
+  Layout, Blocks, FileType, FolderTree, Terminal, CheckCircle, FolderGit2,
+  Gauge, Lightbulb, Star,
+} from 'lucide-react';
+
+const iconMap: Record<string, any> = {
+  BookOpen, Book, Brain, Code, Code2, Globe, Monitor, FileText, List,
+  Palette, Smartphone, Sparkles, Zap, Database, Rocket, Package, Server,
+  Layout, Blocks, FileType, FolderTree, Terminal, CheckCircle, FolderGit2,
+  Gauge, Lightbulb, Star,
+};
+
+const iconBgColorMap: Record<string, string> = {
+  primary: 'bg-primary-500/10',
+  orange: 'bg-orange-500/10',
+  yellow: 'bg-yellow-500/10',
+  red: 'bg-red-500/10',
+  blue: 'bg-blue-500/10',
+  green: 'bg-green-500/10',
+  purple: 'bg-purple-500/10',
+};
+
+const iconTextColorMap: Record<string, string> = {
+  primary: 'text-primary-600 dark:text-primary-400',
+  orange: 'text-orange-600 dark:text-orange-400',
+  yellow: 'text-yellow-600 dark:text-yellow-400',
+  red: 'text-red-600 dark:text-red-400',
+  blue: 'text-blue-600 dark:text-blue-400',
+  green: 'text-green-600 dark:text-green-400',
+  purple: 'text-purple-600 dark:text-purple-400',
+};
+
+const badgeColorMap: Record<string, string> = {
+  primary: 'text-primary-600 dark:text-primary-400',
+  orange: 'text-orange-600 dark:text-orange-400',
+  yellow: 'text-yellow-600 dark:text-yellow-400',
+  red: 'text-red-600 dark:text-red-400',
+  blue: 'text-blue-600 dark:text-blue-400',
+  green: 'text-green-600 dark:text-green-400',
+  purple: 'text-purple-600 dark:text-purple-400',
+};
+
+export async function getStaticPaths() {
+  const cursos = await getCollection('cursos');
+  return cursos.map((curso) => ({
+    params: { slug: curso.id },
+    props: { curso },
+  }));
+}
+
+const { curso } = Astro.props;
+const { Content } = await render(curso);
+const { title, description, moduleBadge, icon, iconColor, prevSlug, prevLabel, nextSlug, nextLabel } = curso.data;
+const Icon = iconMap[icon] || Book;
+const iconBgColor = iconBgColorMap[iconColor] || iconBgColorMap.primary;
+const iconTextColor = iconTextColorMap[iconColor] || iconTextColorMap.primary;
+const badgeColor = badgeColorMap[iconColor] || badgeColorMap.primary;
+---
+
+<CourseLayout title={`${title} | UXnicorp Academy`} description={description}>
+  <div class="prose-custom max-w-4xl">
+    <div class="mb-12 animate-slide-up">
+      <div class="flex items-center space-x-3 mb-4">
+        <div class={`w-12 h-12 rounded-xl ${iconBgColor} flex items-center justify-center`}>
+          <Icon className={`w-6 h-6 ${iconTextColor}`} />
+        </div>
+        <div>
+          <p class={`text-sm ${badgeColor} font-medium`}>{moduleBadge}</p>
+          <h1 class="text-4xl font-bold m-0">{title}</h1>
+        </div>
+      </div>
+      <p class="text-xl text-[rgb(var(--color-text-secondary))]">
+        {description}
+      </p>
+    </div>
+
+    <Content components={{ CodeBlock: CodeBlockWrapper, FlexboxDemo: FlexboxDemoWrapper, GridDemo: GridDemoWrapper, InteractiveDemo, BookOpen, Brain, Globe, Monitor, Code, Code2, Layout, FileText, List, Palette, Smartphone, Sparkles, Zap, Database, Rocket, Package, Server, Blocks, FileType, FolderTree, Terminal, CheckCircle, Gauge, Lightbulb, Star }} />
+
+    <div class="flex justify-between items-center pt-8 border-t border-[rgb(var(--color-border))]">
+      {
+        prevSlug ? (
+          <a href={prevSlug === '/' ? '/' : `/curso/${prevSlug}`} class="btn btn-secondary">
+            ← {prevLabel || 'Anterior'}
+          </a>
+        ) : (
+          <a href="/" class="btn btn-secondary">
+            ← Volver al Inicio
+          </a>
+        )
+      }
+      {
+        nextSlug ? (
+          <a href={`/curso/${nextSlug}`} class="btn btn-primary">
+            {nextLabel || 'Siguiente'} →
+          </a>
+        ) : nextLabel ? (
+          <a href="/ejercicios" class="btn btn-primary">
+            {nextLabel} →
+          </a>
+        ) : null
+      }
+    </div>
+  </div>
+</CourseLayout>

@@ -1,74 +1,67 @@
 ---
-import { 
-  Book, 
-  Code2, 
-  Palette, 
-  Zap, 
-  Rocket, 
-  Layout, 
-  Blocks,
-  FileType,
-  Gauge,
-  Lightbulb,
-  CheckSquare,
-  Award,
-  Briefcase,
-  FolderGit2
+import { getCollection } from 'astro:content';
+import {
+  BookOpen, Code2, Palette, Zap, Rocket, Layout, FileType,
+  FolderGit2, Gauge, Lightbulb, CheckSquare, Award, Briefcase,
 } from 'lucide-react';
 
 const currentPath = Astro.url.pathname;
 
-const sections = [
-  {
-    title: 'Introducción',
-    items: [
-      { href: '/curso/fundamentos', label: 'Fundamentos de Programación', icon: Book },
-    ]
-  },
-  {
-    title: 'Lenguajes Base',
-    items: [
-      { href: '/curso/html', label: 'HTML desde Cero', icon: Code2 },
-      { href: '/curso/css', label: 'CSS + Responsive', icon: Palette },
-      { href: '/curso/javascript', label: 'JavaScript Básico-Intermedio', icon: Zap },
-      { href: '/curso/javascript-avanzado', label: 'JavaScript Avanzado', icon: Zap },
-    ]
-  },
-  {
-    title: 'Framework Moderno',
-    items: [
-      { href: '/curso/astro', label: 'Astro 0→Experto', icon: Rocket },
-      { href: '/curso/react-islands', label: 'React Islands', icon: Layout },
-      { href: '/curso/typescript', label: 'TypeScript', icon: FileType },
-    ]
-  },
-  {
-    title: 'Proyecto Integrador',
-    items: [
-      { href: '/curso/proyecto-completo', label: 'Proyecto de Cero a Deploy', icon: FolderGit2 },
-    ]
-  },
-  {
-    title: 'Profesionalización',
-    items: [
-      { href: '/curso/performance', label: 'Performance & SEO', icon: Gauge },
-      { href: '/curso/metodologias', label: 'Metodologías Pro', icon: Lightbulb },
-    ]
-  },
-  {
-    title: 'Práctica',
-    items: [
-      { href: '/ejercicios', label: 'Ejercicios Prácticos', icon: CheckSquare },
-      { href: '/proyecto-final', label: 'Proyecto Final', icon: Award },
-      { href: '/recursos', label: 'Recursos & Carrera', icon: Briefcase },
-    ]
-  }
-];
+const iconMap: Record<string, any> = {
+  BookOpen, Code2, Palette, Zap, Rocket, Layout, FileType,
+  FolderGit2, Gauge, Lightbulb,
+};
+
+const sectionOrder: Record<string, number> = {
+  introduccion: 0,
+  'lenguajes-base': 1,
+  'framework-moderno': 2,
+  'proyecto-integrador': 3,
+  profesionalizacion: 4,
+};
+
+const sectionLabels: Record<string, string> = {
+  introduccion: 'Introducción',
+  'lenguajes-base': 'Lenguajes Base',
+  'framework-moderno': 'Framework Moderno',
+  'proyecto-integrador': 'Proyecto Integrador',
+  profesionalizacion: 'Profesionalización',
+};
+
+const cursos = await getCollection('cursos');
+const sorted = cursos.sort((a, b) => a.data.order - b.data.order);
+
+const grouped: Record<string, typeof sorted> = {};
+for (const curso of sorted) {
+  const section = curso.data.section;
+  if (!grouped[section]) grouped[section] = [];
+  grouped[section].push(curso);
+}
+
+const dynamicSections = Object.entries(grouped)
+  .sort(([a], [b]) => (sectionOrder[a] ?? 99) - (sectionOrder[b] ?? 99))
+  .map(([section, items]) => ({
+    title: sectionLabels[section] || section,
+    items: items.map((c) => ({
+      href: `/curso/${c.id}`,
+      label: c.data.sidebarLabel,
+      icon: iconMap[c.data.icon] || BookOpen,
+    })),
+  }));
+
+const practiceSection = {
+  title: 'Práctica',
+  items: [
+    { href: '/ejercicios', label: 'Ejercicios Prácticos', icon: CheckSquare },
+    { href: '/proyecto-final', label: 'Proyecto Final', icon: Award },
+    { href: '/recursos', label: 'Recursos & Carrera', icon: Briefcase },
+  ],
+};
 ---
 
 <aside class="fixed left-0 top-16 h-[calc(100vh-4rem)] w-72 bg-[rgb(var(--color-bg-secondary))]/50 backdrop-blur-sm border-r border-[rgb(var(--color-border))] overflow-y-auto hidden lg:block">
   <nav class="p-6 space-y-8">
-    {sections.map((section) => (
+    {dynamicSections.map((section) => (
       <div>
         <h3 class="text-xs font-semibold uppercase tracking-wider text-[rgb(var(--color-text-secondary))] mb-3">
           {section.title}
@@ -77,14 +70,14 @@ const sections = [
           {section.items.map((item) => {
             const isActive = currentPath === item.href || currentPath.startsWith(item.href + '/');
             const Icon = item.icon;
-            
+
             return (
               <li>
                 <a
                   href={item.href}
                   class={`flex items-center space-x-3 px-3 py-2 rounded-lg transition-all duration-200 group
-                    ${isActive 
-                      ? 'bg-primary-500/10 text-primary-600 dark:text-primary-400 font-medium' 
+                    ${isActive
+                      ? 'bg-primary-500/10 text-primary-600 dark:text-primary-400 font-medium'
                       : 'text-[rgb(var(--color-text-secondary))] hover:bg-[rgb(var(--color-bg-secondary))] hover:text-[rgb(var(--color-text-primary))]'
                     }`}
                 >
@@ -97,6 +90,34 @@ const sections = [
         </ul>
       </div>
     ))}
+
+    <div>
+      <h3 class="text-xs font-semibold uppercase tracking-wider text-[rgb(var(--color-text-secondary))] mb-3">
+        {practiceSection.title}
+      </h3>
+      <ul class="space-y-1">
+        {practiceSection.items.map((item) => {
+          const isActive = currentPath === item.href || currentPath.startsWith(item.href + '/');
+          const Icon = item.icon;
+
+          return (
+            <li>
+              <a
+                href={item.href}
+                class={`flex items-center space-x-3 px-3 py-2 rounded-lg transition-all duration-200 group
+                  ${isActive
+                    ? 'bg-primary-500/10 text-primary-600 dark:text-primary-400 font-medium'
+                    : 'text-[rgb(var(--color-text-secondary))] hover:bg-[rgb(var(--color-bg-secondary))] hover:text-[rgb(var(--color-text-primary))]'
+                  }`}
+              >
+                <Icon className={`w-4 h-4 ${isActive ? '' : 'group-hover:scale-110 transition-transform'}`} />
+                <span class="text-sm">{item.label}</span>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   </nav>
 </aside>
 

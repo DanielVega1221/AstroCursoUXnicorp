@@ -1,0 +1,13 @@
+---
+import CodeBlock from './CodeBlock';
+
+interface Props {
+  code: string;
+  language?: string;
+  filename?: string;
+  showLineNumbers?: boolean;
+}
+
+const { code, language, filename, showLineNumbers } = Astro.props;
+---
+<CodeBlock client:load code={code} language={language} filename={filename} showLineNumbers={showLineNumbers} />

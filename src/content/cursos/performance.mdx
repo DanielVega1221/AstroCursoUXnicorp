@@ -1,25 +1,17 @@
-﻿---
-import CourseLayout from '../../layouts/CourseLayout.astro';
-import CodeBlock from '../../components/CodeBlock';
-import { Gauge } from 'lucide-react';
 ---
-
-<CourseLayout title="Performance y SEO | UXnicorp Academy">
-  <div class="prose-custom max-w-4xl">
-    <div class="mb-12">
-      <div class="flex items-center space-x-3 mb-4">
-        <div class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center">
-          <Gauge className="w-6 h-6 text-green-600 dark:text-green-400" />
-        </div>
-        <div>
-          <p class="text-sm text-green-600 dark:text-green-400 font-medium">Módulo 9</p>
-          <h1 class="text-4xl font-bold m-0">Performance y SEO</h1>
-        </div>
-      </div>
-      <p class="text-xl text-[rgb(var(--color-text-secondary))]">
-        Optimiza tus sitios para máxima velocidad y mejor posicionamiento en buscadores.
-      </p>
-    </div>
+title: "Performance y SEO"
+description: "Optimiza tus sitios para máxima velocidad y mejor posicionamiento en buscadores."
+order: 10
+section: "profesionalizacion"
+moduleBadge: "Módulo 9"
+icon: "Gauge"
+iconColor: "green"
+prevSlug: "proyecto-completo"
+prevLabel: "Proyecto Completo"
+nextSlug: "metodologias"
+nextLabel: "Metodologías"
+sidebarLabel: "Performance & SEO"
+---
 
     <section class="mb-16">
       <h2>¿Qué es Performance?</h2>
@@ -251,8 +243,7 @@ import { Gauge } from 'lucide-react';
         Es como tener un asistente que comprime y ajusta las imágenes por ti.
       </p>
       
-      <CodeBlock 
-        client:load
+      <CodeBlock
         language="astro"
         filename="page.astro"
         code={`---
@@ -344,10 +335,3 @@ import miImagen from '../assets/foto.jpg';
         </div>
       </div>
     </section>
-
-    <div class="flex justify-between pt-8 border-t border-[rgb(var(--color-border))]">
-      <a href="/curso/proyecto-completo" class="btn btn-secondary">← Proyecto Completo</a>
-      <a href="/curso/metodologias" class="btn btn-primary">Siguiente: Metodologías →</a>
-    </div>
-  </div>
-</CourseLayout>

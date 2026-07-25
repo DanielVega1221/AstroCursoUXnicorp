@@ -1,0 +1,765 @@
+---
+title: "Astro: 0 → Experto"
+description: "Domina Astro, el framework moderno que prioriza el rendimiento y permite crear sitios ultra rápidos con múltiples frameworks."
+order: 6
+section: "framework-moderno"
+moduleBadge: "Módulo 6"
+icon: "Rocket"
+iconColor: "orange"
+prevSlug: "javascript-avanzado"
+prevLabel: "JavaScript Avanzado"
+nextSlug: "react-islands"
+nextLabel: "React Islands"
+sidebarLabel: "Astro 0→Experto"
+---
+
+import CodeBlock from '../../components/CodeBlock';
+import { Zap, Package, Server } from 'lucide-react';
+
+{/* ¿Qué es Astro? */}
+<section class="mb-16">
+  <h2>¿Qué es Astro?</h2>
+  
+  <div class="card bg-gradient-to-br from-orange-500/5 to-purple-500/5">
+    <p class="text-lg">
+      <strong>Astro</strong> es un framework web moderno que te permite construir sitios web rápidos enfocándose en el contenido.
+    </p>
+    <p class="mt-4">
+      Su filosofía principal: <strong>"Envía menos JavaScript al navegador"</strong>
+    </p>
+  </div>
+
+  <h3>¿Por qué Astro?</h3>
+  
+  <div class="grid md:grid-cols-2 gap-4">
+    <div class="card">
+      <div class="text-3xl mb-2">⚡</div>
+      <h4 class="font-semibold text-orange-600 dark:text-orange-400">Ultra Rápido</h4>
+      <p class="text-sm">Por defecto, genera HTML estático sin JavaScript innecesario.</p>
+    </div>
+
+    <div class="card">
+      <div class="text-3xl mb-2">🏝️</div>
+      <h4 class="font-semibold text-orange-600 dark:text-orange-400">Islands Architecture</h4>
+      <p class="text-sm">Hidrata solo los componentes interactivos que necesitas.</p>
+    </div>
+
+    <div class="card">
+      <div class="text-3xl mb-2">🔧</div>
+      <h4 class="font-semibold text-orange-600 dark:text-orange-400">Agnóstico de Framework</h4>
+      <p class="text-sm">Usa React, Vue, Svelte, Solid... ¡todos juntos si quieres!</p>
+    </div>
+
+    <div class="card">
+      <div class="text-3xl mb-2">📄</div>
+      <h4 class="font-semibold text-orange-600 dark:text-orange-400">Content-First</h4>
+      <p class="text-sm">Perfecto para blogs, documentación, portfolios, landing pages.</p>
+    </div>
+  </div>
+</section>
+
+{/* Instalación */}
+<section class="mb-16">
+  <h2>Crear un Proyecto Astro</h2>
+
+  <CodeBlock
+    language="bash"
+    filename="terminal"
+    code={`# Crear nuevo proyecto
+npm create astro@latest
+
+# Durante la instalación, elige:
+# - Template: Empty o un starter
+# - TypeScript: Sí (recomendado)
+# - Git: Sí
+
+# Entrar al proyecto
+cd mi-proyecto
+
+# Instalar dependencias
+npm install
+
+# Iniciar servidor de desarrollo
+npm run dev
+
+# El sitio estará en http://localhost:4321`}
+  />
+
+  <h3>Estructura del Proyecto</h3>
+  
+  <div class="card bg-[rgb(var(--color-bg-primary))] font-mono text-sm">
+    <pre class="text-[rgb(var(--color-text-secondary))]">
+mi-proyecto/
+├── src/
+│   ├── pages/          # Rutas del sitio
+│   │   └── index.astro # → /
+│   ├── layouts/        # Layouts reutilizables
+│   ├── components/     # Componentes Astro
+│   └── styles/         # CSS global
+├── public/             # Assets estáticos
+│   └── favicon.svg
+├── astro.config.mjs    # Configuración
+├── package.json
+└── tsconfig.json
+    </pre>
+  </div>
+</section>
+
+{/* Componentes Astro */}
+<section class="mb-16">
+  <h2>Componentes Astro</h2>
+
+  <div class="card bg-gradient-to-br from-primary-500/5 to-purple-500/5">
+    <p>
+      Los componentes <code>.astro</code> tienen una sintaxis especial dividida en dos partes:
+    </p>
+    <ol class="mt-3 space-y-2 text-sm">
+      <li><strong>Component Script</strong> (entre <code>---</code>): código que se ejecuta en el servidor</li>
+      <li><strong>Component Template</strong>: HTML con sintaxis similar a JSX</li>
+    </ol>
+  </div>
+  
+  <div class="card bg-gradient-to-r from-orange-50 to-purple-50 dark:from-orange-900/20 dark:to-purple-900/20 mb-6">
+    <h4 class="font-semibold mb-3">📦 Anatomía de un Componente Astro:</h4>
+    <div class="bg-white dark:bg-slate-800 p-4 rounded font-mono text-sm">
+      <div class="border-l-4 border-orange-500 pl-3">
+        <p><span class="text-gray-500">---</span></p>
+        <p><span class="text-purple-600">// JavaScript del servidor</span></p>
+        <p><span class="text-primary-600">const</span> datos = <span class="text-green-600">"valor"</span>;</p>
+        <p><span class="text-gray-500">---</span></p>
+        <p class="mt-2"><span class="text-gray-500">&lt;!-- HTML del componente --&gt;</span></p>
+        <p><span class="text-primary-600">&lt;div&gt;</span>{'{'} datos {'}'}<span class="text-primary-600">&lt;/div&gt;</span></p>
+        <p class="mt-2"><span class="text-purple-600">&lt;style&gt;</span></p>
+        <p>&nbsp;&nbsp;<span class="text-green-600">/* CSS con scope */</span></p>
+        <p><span class="text-purple-600">&lt;/style&gt;</span></p>
+      </div>
+    </div>
+  </div>
+  
+  <p class="mb-4">Los componentes Astro son <strong>reutilizables</strong> y se ejecutan en el <strong>servidor</strong>, generando HTML estático. Esto los hace súper rápidos.</p>
+
+  <CodeBlock
+    language="astro"
+    filename="Card.astro"
+    code={`---
+// Component Script: se ejecuta en el servidor
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+{/* Component Template: HTML con sintaxis JSX */}
+<div class="card">
+  <h3>{title}</h3>
+  {description && <p>{description}</p>}
+</div>
+
+<style>
+  .card {
+    padding: 24px;
+    border-radius: 8px;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+</style>`}
+  />
+
+  <h3>Usar el Componente</h3>
+  
+  <CodeBlock
+    language="astro"
+    filename="index.astro"
+    code={`---
+import Card from '../components/Card.astro';
+---
+
+<html>
+  <body>
+    <Card title="Mi Tarjeta" description="Esta es una descripción" />
+    <Card title="Otra Tarjeta" />
+  </body>
+</html>`}
+  />
+</section>
+
+{/* Layouts */}
+<section class="mb-16">
+  <h2>Layouts</h2>
+
+  <p>Los <strong>layouts</strong> son componentes que envuelven páginas y definen estructura común.</p>
+
+  <CodeBlock
+    language="astro"
+    filename="BaseLayout.astro"
+    code={`---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="/">Inicio</a>
+      <a href="/blog">Blog</a>
+    </nav>
+  </header>
+
+  <main>
+    <slot />  {/* Aquí va el contenido de la página */}
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Mi Sitio</p>
+  </footer>
+</body>
+</html>`}
+  />
+
+  <h3>Usar el Layout</h3>
+  
+  <CodeBlock
+    language="astro"
+    filename="about.astro"
+    code={`---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Sobre Mí">
+  <h1>Sobre Mí</h1>
+  <p>Este contenido se inserta en el slot del layout.</p>
+</BaseLayout>`}
+  />
+</section>
+
+{/* Rutas */}
+<section class="mb-16">
+  <h2 class="flex items-center space-x-3">
+    <Server className="w-8 h-8 text-orange-600 dark:text-orange-400" />
+    <span>Sistema de Rutas</span>
+  </h2>
+
+  <div class="card">
+    <p>
+      Astro usa <strong>enrutamiento basado en archivos</strong>. Cada archivo en <code>src/pages/</code> 
+      se convierte en una ruta.
+    </p>
+  </div>
+
+  <div class="card bg-[rgb(var(--color-bg-primary))] font-mono text-sm">
+    <pre class="text-[rgb(var(--color-text-secondary))]">
+src/pages/
+├── index.astro           → /
+├── about.astro           → /about
+├── blog/
+│   ├── index.astro       → /blog
+│   └── post-1.astro      → /blog/post-1
+└── products/
+    └── [id].astro        → /products/:id (dinámico)
+    </pre>
+  </div>
+
+  <h3>Rutas Dinámicas</h3>
+  
+  <CodeBlock
+    language="astro"
+    filename="[id].astro"
+    code={`---
+// src/pages/products/[id].astro
+
+// getStaticPaths genera todas las rutas posibles
+export async function getStaticPaths() {
+  const products = [
+    { id: '1', name: 'Producto 1' },
+    { id: '2', name: 'Producto 2' },
+  ];
+
+  return products.map(product => ({
+    params: { id: product.id },
+    props: { product }
+  }));
+}
+
+const { product } = Astro.props;
+---
+
+<h1>{product.name}</h1>
+<p>ID: {product.id}</p>`}
+  />
+</section>
+
+{/* Partial Hydration */}
+<section class="mb-16">
+  <h2 class="flex items-center space-x-3">
+    <Zap className="w-8 h-8 text-orange-600 dark:text-orange-400" />
+    <span>Partial Hydration (Client Directives)</span>
+  </h2>
+
+  <div class="card bg-gradient-to-br from-yellow-500/5 to-orange-500/5">
+    <p>
+      <strong>El secreto de la velocidad de Astro:</strong> por defecto, los componentes se renderizan 
+      a HTML estático sin JavaScript. Solo cargas JS cuando lo necesitas.
+    </p>
+  </div>
+
+  <h3>Client Directives</h3>
+
+  <div class="grid md:grid-cols-2 gap-4">
+    <div class="card">
+      <code class="text-orange-600 dark:text-orange-400">client:load</code>
+      <p class="text-sm mt-2">Carga JS inmediatamente al cargar la página.</p>
+    </div>
+
+    <div class="card">
+      <code class="text-orange-600 dark:text-orange-400">client:idle</code>
+      <p class="text-sm mt-2">Carga JS cuando el navegador esté inactivo.</p>
+    </div>
+
+    <div class="card">
+      <code class="text-orange-600 dark:text-orange-400">client:visible</code>
+      <p class="text-sm mt-2">Carga JS cuando el componente sea visible en pantalla.</p>
+    </div>
+
+    <div class="card">
+      <code class="text-orange-600 dark:text-orange-400">client:media</code>
+      <p class="text-sm mt-2">Carga JS solo en ciertos tamaños de pantalla.</p>
+    </div>
+  </div>
+
+  <CodeBlock
+    language="astro"
+    filename="ejemplo-directives.astro"
+    code={`---
+import Counter from '../components/Counter.tsx'; // Componente React
+import Carousel from '../components/Carousel.tsx';
+---
+
+{/* Sin directive: solo HTML estático, sin JS */}
+<Counter />
+
+{/* Con: carga JS inmediatamente */}
+<Counter />
+
+{/* Con client:visible: carga JS solo cuando sea visible */}
+<Carousel client:visible />
+
+{/* Con client:idle: carga JS cuando el navegador esté libre */}
+<Counter client:idle />
+
+{/* Con client:media: solo en móviles */}
+<MobileMenu client:media="(max-width: 768px)" />`}
+  />
+</section>
+
+{/* Estilos */}
+<section class="mb-16">
+  <h2>Estilos en Astro</h2>
+
+  <h3>Estilos con Scope (recomendado)</h3>
+  
+  <CodeBlock
+    language="astro"
+    filename="componente-con-estilos.astro"
+    code={`---
+const { title } = Astro.props;
+---
+
+<div class="container">
+  <h2>{title}</h2>
+</div>
+
+<style>
+  /* Estos estilos SOLO afectan a este componente */
+  .container {
+    padding: 20px;
+    background: #f0f0f0;
+  }
+
+  h2 {
+    color: #333;
+  }
+</style>`}
+  />
+
+  <h3>Estilos Globales</h3>
+  
+  <CodeBlock
+    language="astro"
+    filename="layout-con-global.astro"
+    code={`---
+import '../styles/global.css'; // CSS global
+---
+
+<html>
+  <head>
+    <style is:global>
+      /* También puedes usar is:global para estilos globales inline */
+      body {
+        margin: 0;
+        font-family: system-ui;
+      }
+    </style>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>`}
+  />
+</section>
+
+{/* Markdown & MDX */}
+<section class="mb-16">
+  <h2>Markdown y MDX</h2>
+
+  <div class="card">
+    <p>
+      Astro tiene soporte nativo para <strong>Markdown</strong> y <strong>MDX</strong> (Markdown + JSX).
+      Perfecto para blogs y documentación.
+    </p>
+  </div>
+
+  <h3>Crear una Página Markdown</h3>
+  
+  <CodeBlock
+    language="markdown"
+    filename="src/pages/blog/mi-post.md"
+    code={String.raw`---
+layout: ../../layouts/BlogLayout.astro
+title: "Mi Primer Post"
+author: "Ana"
+date: "2025-01-01"
+---
+
+# {frontmatter.title}
+
+Este es contenido en **Markdown**.
+
+- Lista item 1
+- Lista item 2
+
+## Subtítulo
+
+Puedes usar todo el poder de Markdown aquí.`}
+  />
+
+  <h3>MDX: Markdown + Componentes</h3>
+  
+  <CodeBlock
+    language="mdx"
+    filename="src/pages/blog/post-interactivo.mdx"
+    code={String.raw`---
+layout: ../../layouts/BlogLayout.astro
+title: "Post Interactivo"
+---
+
+import Counter from '../../components/Counter.tsx';
+import Alert from '../../components/Alert.astro';
+
+# Post con Componentes
+
+Este es Markdown normal, pero también puedes insertar componentes:
+
+<Alert type="info">
+  Este es un componente dentro de Markdown!
+</Alert>
+
+<Counter />
+
+¡Increíble verdad!`}
+  />
+</section>
+
+{/* Content Collections */}
+<section class="mb-16">
+  <h2 class="flex items-center space-x-3">
+    <Package className="w-8 h-8 text-orange-600 dark:text-orange-400" />
+    <span>Content Collections</span>
+  </h2>
+
+  <div class="card bg-gradient-to-br from-purple-500/5 to-primary-500/5">
+    <p>
+      Las <strong>Content Collections</strong> son la forma moderna de manejar contenido en Astro.
+      Proveen validación de tipos, autocompletado y mejor organización.
+    </p>
+  </div>
+
+  <h3>Configurar Colecciones</h3>
+  
+  <CodeBlock
+    language="typescript"
+    filename="src/content/config.ts"
+    code={`import { defineCollection, z } from 'astro:content';
+
+const blogCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    author: z.string(),
+    date: z.date(),
+    tags: z.array(z.string()).optional(),
+    image: z.string().optional(),
+  })
+});
+
+export const collections = {
+  'blog': blogCollection,
+};`}
+  />
+
+  <h3>Estructura de Archivos</h3>
+  
+  <div class="card bg-[rgb(var(--color-bg-primary))] font-mono text-sm">
+    <pre class="text-[rgb(var(--color-text-secondary))]">
+src/content/
+└── blog/
+    ├── post-1.md
+    ├── post-2.md
+    └── post-3.md
+    </pre>
+  </div>
+
+  <h3>Usar Colecciones</h3>
+  
+  <CodeBlock
+    language="astro"
+    filename="src/pages/blog/index.astro"
+    code={`---
+import { getCollection } from 'astro:content';
+
+// Obtener todos los posts
+const posts = await getCollection('blog');
+
+// Ordenar por fecha
+const sortedPosts = posts.sort((a, b) => 
+  b.data.date.getTime() - a.data.date.getTime()
+);
+---
+
+<h1>Blog</h1>
+
+{sortedPosts.map(post => (
+  <article>
+    <h2>
+      <a href={\`/blog/\${post.slug}\`}>
+        {post.data.title}
+      </a>
+    </h2>
+    <p>Por {post.data.author} - {post.data.date.toLocaleDateString()}</p>
+  </article>
+))}`}
+  />
+
+  <CodeBlock
+    language="astro"
+    filename="src/pages/blog/[...slug].astro"
+    code={`---
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post }
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<article>
+  <h1>{post.data.title}</h1>
+  <p>Por {post.data.author}</p>
+  
+  {/* Renderizar el contenido Markdown */}
+  <Content />
+</article>`}
+  />
+</section>
+
+{/* API Routes */}
+<section class="mb-16">
+  <h2>API Routes</h2>
+
+  <div class="card">
+    <p>
+      Astro permite crear <strong>endpoints de API</strong> directamente en tu proyecto.
+      Útil para formularios, datos dinámicos, webhooks...
+    </p>
+  </div>
+
+  <CodeBlock
+    language="typescript"
+    filename="src/pages/api/contact.ts"
+    code={`import type { APIRoute } from 'astro';
+
+export const POST: APIRoute = async ({ request }) => {
+  const data = await request.json();
+  
+  // Procesar datos (enviar email, guardar en DB, etc.)
+  console.log('Datos recibidos:', data);
+  
+  return new Response(JSON.stringify({
+    success: true,
+    message: 'Formulario recibido'
+  }), {
+    status: 200,
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+};`}
+  />
+
+  <h3>Consumir desde el Frontend</h3>
+  
+  <CodeBlock
+    language="javascript"
+    filename="formulario.js"
+    code={`async function enviarFormulario(datos) {
+  const response = await fetch('/api/contact', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(datos)
+  });
+  
+  const result = await response.json();
+  console.log(result);
+}`}
+  />
+</section>
+
+{/* Integraciones */}
+<section class="mb-16">
+  <h2>Integraciones</h2>
+
+  <div class="card">
+    <p>
+      Astro tiene un ecosistema rico de <strong>integraciones</strong> para añadir funcionalidades.
+    </p>
+  </div>
+
+  <CodeBlock
+    language="bash"
+    filename="terminal"
+    code={`# Añadir React
+npx astro add react
+
+# Añadir Tailwind CSS
+npx astro add tailwind
+
+# Añadir Sitemap para SEO
+npx astro add sitemap
+
+# Añadir MDX
+npx astro add mdx`}
+  />
+
+  <h3>Configuración Manual</h3>
+  
+  <CodeBlock
+    language="javascript"
+    filename="astro.config.mjs"
+    code={`import { defineConfig } from 'astro/config';
+import react from '@astrojs/react';
+import tailwind from '@astrojs/tailwind';
+
+export default defineConfig({
+  integrations: [
+    react(),
+    tailwind()
+  ],
+  site: 'https://mi-sitio.com',
+});`}
+  />
+</section>
+
+{/* Deploy */}
+<section class="mb-16">
+  <h2>Deploy a Vercel</h2>
+
+  <div class="card bg-gradient-to-br from-primary-500/5 to-primary-600/5">
+    <p>
+      <strong>Vercel</strong> es la plataforma recomendada para deployar proyectos Astro.
+      Es gratis y súper sencillo.
+    </p>
+  </div>
+
+  <h3>Opción 1: Deploy con CLI</h3>
+  
+  <CodeBlock
+    language="bash"
+    filename="terminal"
+    code={`# Instalar Vercel CLI
+npm i -g vercel
+
+# Deploy
+vercel
+
+# Deploy a producción
+vercel --prod`}
+  />
+
+  <h3>Opción 2: Deploy con GitHub</h3>
+  
+  <div class="space-y-3 text-sm">
+    <div class="flex items-start space-x-2">
+      <span class="font-bold">1.</span>
+      <p>Sube tu proyecto a GitHub</p>
+    </div>
+    <div class="flex items-start space-x-2">
+      <span class="font-bold">2.</span>
+      <p>Ve a <a href="https://vercel.com" target="_blank" class="text-primary-600">vercel.com</a> y conecta tu repositorio</p>
+    </div>
+    <div class="flex items-start space-x-2">
+      <span class="font-bold">3.</span>
+      <p>Vercel detecta automáticamente que es un proyecto Astro</p>
+    </div>
+    <div class="flex items-start space-x-2">
+      <span class="font-bold">4.</span>
+      <p>¡Deploy automático en cada push!</p>
+    </div>
+  </div>
+</section>
+
+{/* Mejores Prácticas */}
+<section class="mb-16">
+  <h2>✅ Mejores Prácticas con Astro</h2>
+
+  <div class="grid md:grid-cols-2 gap-4">
+    <div class="card bg-green-500/5 border-l-4 border-green-500">
+      <h4 class="text-green-600 dark:text-green-400 font-semibold">Usa client directives sabiamente</h4>
+      <p class="text-sm">Solo hidrata lo que necesita ser interactivo.</p>
+    </div>
+
+    <div class="card bg-green-500/5 border-l-4 border-green-500">
+      <h4 class="text-green-600 dark:text-green-400 font-semibold">Aprovecha Content Collections</h4>
+      <p class="text-sm">Para blogs y contenido estructurado.</p>
+    </div>
+
+    <div class="card bg-green-500/5 border-l-4 border-green-500">
+      <h4 class="text-green-600 dark:text-green-400 font-semibold">Usa estilos con scope</h4>
+      <p class="text-sm">Evita conflictos y mantén el CSS organizado.</p>
+    </div>
+
+    <div class="card bg-green-500/5 border-l-4 border-green-500">
+      <h4 class="text-green-600 dark:text-green-400 font-semibold">Optimiza imágenes</h4>
+      <p class="text-sm">Usa el componente <code>&lt;Image /&gt;</code> de Astro.</p>
+    </div>
+  </div>
+</section>

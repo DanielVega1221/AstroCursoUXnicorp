@@ -1,0 +1,590 @@
+---
+title: "Fundamentos de Programación"
+description: "Comienza tu viaje en el desarrollo web entendiendo los conceptos fundamentales de la programación y cómo funciona la web."
+order: 1
+section: "introduccion"
+moduleBadge: "Módulo 1"
+icon: "BookOpen"
+iconColor: "primary"
+prevSlug: null
+nextSlug: "html"
+nextLabel: "HTML desde Cero"
+sidebarLabel: "Fundamentos de Programación"
+---
+
+{/* Sección 1: ¿Qué es Programar? */}
+<section class="mb-16">
+  <h2 class="flex items-center space-x-3">
+    <Brain className="w-8 h-8 text-primary-600 dark:text-primary-400" />
+    <span>¿Qué es Programar?</span>
+  </h2>
+  
+  <div class="card">
+    <p class="text-lg mb-4">
+      <strong>Programar</strong> es el arte de dar instrucciones precisas a una computadora para que realice tareas específicas. 
+      Es como escribir una receta de cocina, pero para una máquina.
+    </p>
+    
+    <p class="mb-4">
+      Piensa en la computadora como un asistente muy literal que hace <strong>exactamente</strong> lo que le dices, 
+      ni más ni menos. Si olvidas un paso o te equivocas en una instrucción, la computadora se confundirá o dará un error.
+    </p>
+    
+    <div class="mt-4 p-4 bg-primary-500/5 border-l-4 border-primary-500 rounded">
+      <p class="font-semibold mb-2">💡 <strong>Analogía del Café:</strong></p>
+      <div class="grid md:grid-cols-2 gap-4 text-sm">
+        <div>
+          <p class="font-semibold text-green-600 mb-1">✓ Humano:</p>
+          <p>"Prepara café"</p>
+          <p class="text-xs text-gray-600">Entiende el contexto, sabe todos los pasos</p>
+        </div>
+        <div>
+          <p class="font-semibold text-blue-600 mb-1">✓ Computadora:</p>
+          <p>"1. Toma taza<br/>2. Pon 200ml agua<br/>3. Añade 15g café<br/>4. Calienta a 95°C<br/>5. Espera 4 minutos"</p>
+          <p class="text-xs text-gray-600">Necesita instrucciones precisas</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="mt-4 p-4 bg-green-50 dark:bg-green-900/20 rounded">
+      <p class="text-sm"><strong>Lo bueno:</strong> Una vez que la computadora sabe hacer algo, puede repetirlo miles de veces sin cansarse ni equivocarse. ¡Y súper rápido!</p>
+    </div>
+  </div>
+
+  <h3>Conceptos Clave de Programación</h3>
+  
+  <p class="mb-4">Estos son los 4 pilares fundamentales que encontrarás en <strong>todos</strong> los lenguajes de programación:</p>
+  
+  <div class="grid md:grid-cols-2 gap-4">
+    <div class="card">
+      <h4 class="text-lg font-semibold text-primary-600 dark:text-primary-400">📦 Variables</h4>
+      <p class="text-sm mb-2">Cajas con etiquetas que guardan información.</p>
+      <div class="bg-primary-50 dark:bg-primary-900/20 p-2 rounded text-xs">
+        <strong>Ejemplo del mundo real:</strong><br/>
+        Como poner dinero en un sobre y escribir "Ahorro" en él. Luego puedes abrir ese sobre y usar el dinero.
+      </div>
+    </div>
+    
+    <div class="card">
+      <h4 class="text-lg font-semibold text-primary-600 dark:text-primary-400">🏷️ Tipos de Datos</h4>
+      <p class="text-sm mb-2">Diferentes tipos de información que guardas.</p>
+      <div class="bg-primary-50 dark:bg-primary-900/20 p-2 rounded text-xs">
+        <strong>Ejemplo:</strong><br/>
+        • Texto: "Hola"<br/>
+        • Número: 25<br/>
+        • Verdadero/Falso: ¿Está lloviendo? No
+      </div>
+    </div>
+    
+    <div class="card">
+      <h4 class="text-lg font-semibold text-primary-600 dark:text-primary-400">🔀 Condicionales</h4>
+      <p class="text-sm mb-2">Tomar decisiones basadas en condiciones.</p>
+      <div class="bg-primary-50 dark:bg-primary-900/20 p-2 rounded text-xs">
+        <strong>Ejemplo del mundo real:</strong><br/>
+        "Si llueve, lleva paraguas. Si no llueve, no lo lleves."
+      </div>
+    </div>
+    
+    <div class="card">
+      <h4 class="text-lg font-semibold text-primary-600 dark:text-primary-400">🔁 Bucles</h4>
+      <p class="text-sm mb-2">Repetir una acción automáticamente.</p>
+      <div class="bg-primary-50 dark:bg-primary-900/20 p-2 rounded text-xs">
+        <strong>Ejemplo del mundo real:</strong><br/>
+        "Por cada estudiante en la clase, entrégale una hoja." En vez de decir 30 veces "Entrega hoja a Juan, entrega hoja a María..."
+      </div>
+    </div>
+  </div>
+
+  <h3 class="mt-8">👀 Primer Vistazo al Código</h3>
+  
+  <p class="mb-4">
+    No te preocupes si esto parece confuso al principio. <strong>Es normal.</strong> Nadie entiende código la primera vez que lo ve. 
+    Vamos a explicar cada línea:
+  </p>
+  
+  <div class="card bg-yellow-50 dark:bg-yellow-900/20 mb-4">
+    <p class="font-semibold mb-2">🔍 Lee el código así:</p>
+    <ul class="text-sm space-y-2">
+      <li><code>//</code> = Comentario (notas para humanos, la computadora lo ignora)</li>
+      <li><code>let</code> = "Crea una variable" (una caja para guardar algo)</li>
+      <li><code>=</code> = "Guarda esto" (no es "igual", es "asignar")</li>
+      <li><code>"texto"</code> = Texto entre comillas</li>
+      <li><code>if</code> = "Si" (tomar decisión)</li>
+      <li><code>for</code> = "Para cada" (repetir)</li>
+    </ul>
+  </div>
+  
+  <CodeBlock
+    language="javascript"
+    filename="ejemplo-variables.js"
+    code={`// Variables: guardan información
+let nombre = "Ana";
+let edad = 25;
+let esProgramadora = true;
+
+// Condicionales: toman decisiones
+if (edad >= 18) {
+  console.log("Eres mayor de edad");
+}
+
+// Bucles: repiten acciones
+for (let i = 1; i <= 5; i++) {
+  console.log("Contando: " + i);
+}`}
+  />
+</section>
+
+{/* Sección 2: HTML, CSS y JavaScript */}
+<section class="mb-16">
+  <h2 class="flex items-center space-x-3">
+    <Code className="w-8 h-8 text-primary-600 dark:text-primary-400" />
+    <span>Los 3 Pilares de la Web</span>
+  </h2>
+  
+  <div class="card bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 mb-6">
+    <p class="text-lg mb-3">
+      Para crear una página web necesitas <strong>3 lenguajes</strong>. Cada uno hace algo diferente, pero trabajan juntos.
+    </p>
+    <p class="text-sm">
+      Piénsalo así: HTML es el contenido (texto, imágenes), CSS es la decoración (colores, tamaños), 
+      y JavaScript es la interactividad (botones que funcionan, animaciones).
+    </p>
+  </div>
+
+  <div class="grid md:grid-cols-3 gap-6">
+    {/* HTML */}
+    <div class="card text-center border-2 border-orange-200 dark:border-orange-800">
+      <div class="w-16 h-16 mx-auto mb-4 rounded-xl bg-orange-500/10 flex items-center justify-center">
+        <span class="text-3xl">📄</span>
+      </div>
+      <h3 class="text-xl font-bold text-orange-600">HTML</h3>
+      <p class="text-sm text-[rgb(var(--color-text-secondary))] mb-3">
+        <strong>Estructura</strong><br />
+        El esqueleto de la página.
+      </p>
+      <div class="bg-orange-50 dark:bg-orange-900/20 p-2 rounded text-xs">
+        <strong>Define QUÉ hay:</strong><br/>
+        Títulos, párrafos, imágenes, enlaces, botones...
+      </div>
+    </div>
+
+    {/* CSS */}
+    <div class="card text-center border-2 border-blue-200 dark:border-blue-800">
+      <div class="w-16 h-16 mx-auto mb-4 rounded-xl bg-blue-500/10 flex items-center justify-center">
+        <span class="text-3xl">🎨</span>
+      </div>
+      <h3 class="text-xl font-bold text-blue-600">CSS</h3>
+      <p class="text-sm text-[rgb(var(--color-text-secondary))] mb-3">
+        <strong>Estilo</strong><br />
+        La apariencia visual.
+      </p>
+      <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded text-xs">
+        <strong>Define CÓMO se ve:</strong><br/>
+        Colores, tamaños, fuentes, posiciones, animaciones...
+      </div>
+    </div>
+
+    {/* JavaScript */}
+    <div class="card text-center border-2 border-yellow-200 dark:border-yellow-800">
+      <div class="w-16 h-16 mx-auto mb-4 rounded-xl bg-yellow-500/10 flex items-center justify-center">
+        <span class="text-3xl">⚡</span>
+      </div>
+      <h3 class="text-xl font-bold text-yellow-600">JavaScript</h3>
+      <p class="text-sm text-[rgb(var(--color-text-secondary))] mb-3">
+        <strong>Comportamiento</strong><br />
+        La interactividad.
+      </p>
+      <div class="bg-yellow-50 dark:bg-yellow-900/20 p-2 rounded text-xs">
+        <strong>Define QUÉ puede hacer:</strong><br/>
+        Responder a clicks, validar formularios, cargar datos, animar...
+      </div>
+    </div>
+  </div>
+
+  <div class="card bg-gradient-to-br from-primary-500/5 to-accent-500/5 mt-6">
+    <h4 class="font-semibold mb-4 text-lg">🏗️ Analogía Completa de una Casa:</h4>
+    <div class="grid md:grid-cols-3 gap-4 text-sm">
+      <div class="p-3 bg-orange-50 dark:bg-orange-900/20 rounded">
+        <p class="font-semibold text-orange-600 mb-2">HTML = Estructura</p>
+        <p class="text-xs">Las paredes, puertas, ventanas, habitaciones. La casa básica sin decorar.</p>
+      </div>
+      <div class="p-3 bg-blue-50 dark:bg-blue-900/20 rounded">
+        <p class="font-semibold text-blue-600 mb-2">CSS = Decoración</p>
+        <p class="text-xs">Pintura, muebles, cortinas, alfombras. Hace que la casa se vea bonita.</p>
+      </div>
+      <div class="p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded">
+        <p class="font-semibold text-yellow-600 mb-2">JavaScript = Funcionalidad</p>
+        <p class="text-xs">Interruptores de luz, puertas automáticas, alarmas. Hace que las cosas funcionen.</p>
+      </div>
+    </div>
+    <p class="text-sm mt-4 text-center font-semibold">
+      💡 Los tres juntos crean una página web completa y funcional
+    </p>
+  </div>
+  
+  <h3 class="mt-8">📝 Ejemplo Completo: Los 3 Trabajando Juntos</h3>
+  
+  <p class="mb-4">
+    Mira cómo HTML, CSS y JavaScript trabajan en equipo para crear un botón funcional. 
+    <strong>No te preocupes si no entiendes todo</strong>, lo veremos en detalle en los próximos módulos:
+  </p>
+
+  <CodeBlock
+    language="html"
+    filename="ejemplo-completo.html"
+    code={`<!DOCTYPE html>
+<html>
+<head>
+  {/* CSS: define estilos */}
+  <style>
+    button {
+      background: blue;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  {/* HTML: define estructura */}
+  <h1>Mi Primera Página</h1>
+  <button id="miBoton">¡Haz clic!</button>
+
+  {/* JavaScript: define comportamiento */}
+  <script>
+    document.getElementById('miBoton').addEventListener('click', () => {
+      alert('¡Hola desde JavaScript!');
+    });
+  </script>
+</body>
+</html>`}
+  />
+</section>
+
+{/* Sección 3: Cómo funciona el navegador */}
+<section class="mb-16">
+  <h2 class="flex items-center space-x-3">
+    <Globe className="w-8 h-8 text-primary-600 dark:text-primary-400" />
+    <span>¿Cómo funciona un Navegador?</span>
+  </h2>
+
+  <div class="card">
+    <p>
+      Un <strong>navegador</strong> (Chrome, Firefox, Safari...) es un programa que:
+    </p>
+    <ol class="space-y-2 mt-4">
+      <li>📥 <strong>Pide archivos</strong> a un servidor (HTML, CSS, JS, imágenes...)</li>
+      <li>🔍 <strong>Lee el HTML</strong> y construye el DOM (Document Object Model)</li>
+      <li>🎨 <strong>Aplica el CSS</strong> para darle estilo</li>
+      <li>⚡ <strong>Ejecuta JavaScript</strong> para hacerlo interactivo</li>
+      <li>🖥️ <strong>Muestra la página</strong> en pantalla</li>
+    </ol>
+  </div>
+
+  <h3>El DOM: Árbol de Objetos</h3>
+  
+  <div class="card bg-[rgb(var(--color-bg-primary))] font-mono text-sm">
+    <pre class="text-[rgb(var(--color-text-secondary))]">
+Document
+  └─ html
+      ├─ head
+      │   ├─ title
+      │   └─ style
+      └─ body
+          ├─ h1 (texto: "Hola Mundo")
+          ├─ p (texto: "Bienvenido")
+          └─ button (texto: "Click")
+    </pre>
+  </div>
+
+  <p class="text-sm text-[rgb(var(--color-text-secondary))]">
+    El DOM es la representación en memoria de tu página HTML. JavaScript puede modificarlo para cambiar contenido, estilos o agregar elementos dinámicamente.
+  </p>
+</section>
+
+{/* Sección 4: Cómo funciona Internet */}
+<section class="mb-16">
+  <h2 class="flex items-center space-x-3">
+    <Monitor className="w-8 h-8 text-primary-600 dark:text-primary-400" />
+    <span>¿Cómo funciona Internet?</span>
+  </h2>
+
+  <div class="card">
+    <h4 class="font-semibold mb-3">El Ciclo Request → Response</h4>
+    
+    <div class="space-y-4">
+      <div class="flex items-start space-x-3">
+        <div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary-500 text-white flex items-center justify-center text-sm font-bold">1</div>
+        <div>
+          <strong>Cliente hace una petición (Request)</strong>
+          <p class="text-sm text-[rgb(var(--color-text-secondary))]">
+            Tu navegador envía: "Quiero ver ejemplo.com"
+          </p>
+        </div>
+      </div>
+
+      <div class="flex items-start space-x-3">
+        <div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary-500 text-white flex items-center justify-center text-sm font-bold">2</div>
+        <div>
+          <strong>DNS traduce el nombre a IP</strong>
+          <p class="text-sm text-[rgb(var(--color-text-secondary))]">
+            "ejemplo.com" → 192.0.2.1
+          </p>
+        </div>
+      </div>
+
+      <div class="flex items-start space-x-3">
+        <div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary-500 text-white flex items-center justify-center text-sm font-bold">3</div>
+        <div>
+          <strong>Servidor procesa y responde (Response)</strong>
+          <p class="text-sm text-[rgb(var(--color-text-secondary))]">
+            Envía archivos HTML, CSS, JS, imágenes...
+          </p>
+        </div>
+      </div>
+
+      <div class="flex items-start space-x-3">
+        <div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary-500 text-white flex items-center justify-center text-sm font-bold">4</div>
+        <div>
+          <strong>Navegador muestra la página</strong>
+          <p class="text-sm text-[rgb(var(--color-text-secondary))]">
+            Renderiza HTML + CSS, ejecuta JS
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3>¿Qué es una API?</h3>
+  
+  <div class="card bg-gradient-to-br from-accent-500/5 to-primary-500/5">
+    <p>
+      Una <strong>API</strong> (Application Programming Interface) es como un camarero en un restaurante:
+    </p>
+    <ul class="space-y-2 mt-3 text-sm">
+      <li>🍽️ Tú (cliente) le pides algo específico</li>
+      <li>📝 El camarero lleva tu pedido a la cocina (servidor)</li>
+      <li>🍕 La cocina prepara la comida (datos)</li>
+      <li>✅ El camarero te trae lo que pediste</li>
+    </ul>
+    <p class="mt-3 text-sm">
+      <strong>Ejemplo real:</strong> Una app del clima pide datos a una API meteorológica, y esta responde con temperatura, pronóstico, etc.
+    </p>
+  </div>
+</section>
+
+{/* Errores Comunes */}
+<section class="mb-16">
+  <h2>⚠️ Errores Comunes de Principiantes</h2>
+  
+  <div class="space-y-4">
+    <div class="card border-l-4 border-red-500">
+      <h4 class="text-red-600 dark:text-red-400 font-semibold">Confundir = con ==</h4>
+      <p class="text-sm">
+        <code>=</code> asigna un valor. <code>==</code> compara valores.
+      </p>
+    </div>
+
+    <div class="card border-l-4 border-red-500">
+      <h4 class="text-red-600 dark:text-red-400 font-semibold">Olvidar punto y coma o llaves</h4>
+      <p class="text-sm">
+        JavaScript es estricto con la sintaxis. Un error pequeño puede romper todo.
+      </p>
+    </div>
+
+    <div class="card border-l-4 border-red-500">
+      <h4 class="text-red-600 dark:text-red-400 font-semibold">No revisar la consola del navegador</h4>
+      <p class="text-sm">
+        Presiona F12 en tu navegador. La consola muestra errores y mensajes útiles.
+      </p>
+    </div>
+  </div>
+</section>
+
+{/* Cheatsheet */}
+<section class="mb-16">
+  <h2 class="flex items-center space-x-3">
+    <span class="text-2xl">📘</span>
+    <span>Cheatsheet: Fundamentos de Programación</span>
+  </h2>
+  
+  <div class="card">
+    <div class="space-y-6">
+      <div class="grid md:grid-cols-3 gap-4">
+        <div>
+          <h4 class="font-semibold text-blue-600 mb-3">Conceptos Core</h4>
+          <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded text-xs space-y-1">
+            <p><strong>Variable:</strong> Guarda datos</p>
+            <p><strong>Función:</strong> Código reutilizable</p>
+            <p><strong>Condicional:</strong> if/else (decisiones)</p>
+            <p><strong>Bucle:</strong> for/while (repetición)</p>
+            <p><strong>Array:</strong> Lista ordenada [1, 2, 3]</p>
+            <p><strong>Objeto:</strong> {'{'} clave: valor {'}'}</p>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="font-semibold text-blue-600 mb-3">Los 3 Pilares Web</h4>
+          <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded text-xs space-y-1">
+            <p><strong>HTML:</strong> Estructura/contenido</p>
+            <p><strong>CSS:</strong> Estilos/apariencia</p>
+            <p><strong>JavaScript:</strong> Comportamiento/lógica</p>
+            <p class="pt-2 border-t border-gray-300 dark:border-gray-600">
+              Juntos forman cualquier sitio web
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="font-semibold text-blue-600 mb-3">Cómo Funciona la Web</h4>
+          <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded text-xs space-y-1">
+            <p><strong>Cliente:</strong> Tu navegador</p>
+            <p><strong>Servidor:</strong> Computadora remota</p>
+            <p><strong>Request:</strong> Pedir datos</p>
+            <p><strong>Response:</strong> Recibir datos</p>
+            <p><strong>URL:</strong> Dirección web</p>
+            <p><strong>HTTP:</strong> Protocolo de comunicación</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-4">
+        <div>
+          <h4 class="font-semibold text-blue-600 mb-3">Tipos de Datos</h4>
+          <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded font-mono text-xs">
+            <pre>{`// Primitivos
+string: "texto"
+number: 42
+boolean: true/false
+null: vacío intencional
+undefined: sin definir
+
+// Compuestos
+array: [1, 2, 3]
+object: { nombre: "Ana" }`}</pre>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="font-semibold text-blue-600 mb-3">Operadores Básicos</h4>
+          <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded font-mono text-xs">
+            <pre>{`// Aritméticos
++ - * / %
+
+// Comparación
+== === != !== > < >= <=
+
+// Lógicos
+&& (y)  || (o)  ! (no)
+
+// Asignación
+= += -= *= /=`}</pre>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="font-semibold text-blue-600 mb-3">Estructuras de Control</h4>
+        <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded font-mono text-xs">
+          <pre>{`// Condicional
+if (condicion) {
+  // código si es verdadero
+} else {
+  // código si es falso
+}
+
+// Bucle for
+for (let i = 0; i < 10; i++) {
+  console.log(i); // 0, 1, 2...9
+}
+
+// Bucle while
+while (condicion) {
+  // código mientras sea verdadero
+}
+
+// Función
+function saludar(nombre) {
+  return "Hola " + nombre;
+}
+saludar("Ana"); // "Hola Ana"`}</pre>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-4">
+        <div>
+          <h4 class="font-semibold text-blue-600 mb-3">DOM Básico</h4>
+          <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded font-mono text-xs">
+            <pre>{`// Seleccionar elementos
+document.getElementById("id")
+document.querySelector(".clase")
+
+// Modificar contenido
+elemento.textContent = "Nuevo"
+elemento.innerHTML = "<p>HTML</p>"
+
+// Agregar eventos
+elemento.addEventListener("click", () => {
+  console.log("¡Click!");
+});`}</pre>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="font-semibold text-blue-600 mb-3">Arrays y Objetos</h4>
+          <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded font-mono text-xs">
+            <pre>{`// Array
+const numeros = [1, 2, 3];
+numeros.push(4);  // [1,2,3,4]
+numeros.length;   // 4
+
+// Objeto
+const persona = {
+  nombre: "Ana",
+  edad: 25,
+  saludar() {
+    return "Hola!";
+  }
+};
+persona.nombre; // "Ana"`}</pre>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="font-semibold text-blue-600 mb-3">Errores Comunes de Principiantes</h4>
+        <div class="bg-red-50 dark:bg-red-900/20 p-3 rounded text-xs space-y-2">
+          <div>
+            <p class="font-semibold text-red-600">❌ Confundir = con ==</p>
+            <p><code>x = 5</code> (asignación) vs <code>x == 5</code> (comparación)</p>
+          </div>
+          <div>
+            <p class="font-semibold text-red-600">❌ Variables sin declarar</p>
+            <p>Siempre usa <code>let</code>, <code>const</code>, o <code>var</code></p>
+          </div>
+          <div>
+            <p class="font-semibold text-red-600">❌ Olvidar comillas en strings</p>
+            <p><code>"texto"</code> ✅  vs  <code>texto</code> ❌ (busca variable)</p>
+          </div>
+          <div>
+            <p class="font-semibold text-red-600">❌ No usar la consola (F12)</p>
+            <p>La consola del navegador es tu mejor amiga - úsala siempre</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded">
+        <h4 class="font-semibold text-green-700 dark:text-green-300 mb-2">💡 Tips para Principiantes</h4>
+        <ul class="text-sm space-y-1">
+          <li>✅ Practica escribiendo código todos los días (aunque sean 15 minutos)</li>
+          <li>✅ Lee los mensajes de error - te dicen exactamente qué está mal</li>
+          <li>✅ Usa <code>console.log()</code> para ver qué está pasando en tu código</li>
+          <li>✅ No copies y pegues sin entender - escribe cada línea</li>
+          <li>✅ Comienza simple - un programa que funciona es mejor que uno complejo roto</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
